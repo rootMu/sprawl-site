@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — The journey</title>
+<meta name="description" content="How Sprawl is being built by one person and a team of Claude agents: the timeline, the numbers, and the rules learned the hard way.">
+<meta property="og:title" content="Sprawl — The journey">
+<meta property="og:description" content="How Sprawl is being built by one person and a team of Claude agents: the timeline, the numbers, and the rules learned the hard way.">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.pulse-box { padding: 14px 12px 8px; overflow-x: auto; }
+.pulse-box svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.pulse-box .bar { fill: var(--brass); }
+.pulse-box .bar.claude { fill: var(--brass); }
+.pulse-box .hit { fill: transparent; cursor: default; }
+.pulse-box .hit:hover + .bar, .pulse-box .bar.on { fill: var(--gold); }
+.pulse-box .axis text { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+.pulse-box .axis line { stroke: var(--line); }
+.pulse-box .night { fill: #0f0f0e; }
+.pulse-box .mk line { stroke: var(--brass-deep); stroke-dasharray: 2 3; }
+.pulse-box .mk text { font-family: var(--body); font-size: 12px; fill: var(--text-2); paint-order: stroke; stroke: var(--panel); stroke-width: 3px; }
+.note { font-size: 13px; color: var(--muted); margin-top: 10px; max-width: 80ch; }
+
+.grid2 { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.areas { display: grid; gap: 7px; padding: 16px; }
+.areas .row { display: grid; grid-template-columns: 84px minmax(0, 1fr) 44px; gap: 10px; align-items: center; font-size: 14px; }
+.areas .row span:first-child { color: var(--text-2); }
+.areas .track { height: 12px; }
+.areas .fill { height: 100%; background: var(--brass); border-radius: 0 4px 4px 0; }
+.areas .row b { font-family: var(--mono); font-weight: 400; font-size: 13px; color: var(--parchment); text-align: right; }
+
+.flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: step; }
+.flow li { counter-increment: step; background: var(--panel); border: 1px solid var(--line); padding: 12px 14px 12px 50px; position: relative; }
+.flow li::before { content: counter(step); position: absolute; left: 14px; top: 11px; font-family: var(--display); font-size: 24px; color: var(--brass); line-height: 1; }
+.flow b { display: block; font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--parchment); line-height: 1.2; }
+.flow p { margin: 3px 0 0; font-size: 14px; color: var(--text-2); }
+
+.days { display: grid; gap: 18px; }
+.day { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 8px 28px; border-top: 1px solid var(--line); padding-top: 18px; }
+.day .when b { display: block; font-family: var(--display); font-weight: 400; font-size: 30px; color: var(--parchment); line-height: 1; }
+.day .when span { display: block; font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 6px; }
+.day h3 { font-size: 26px; line-height: 1.1; }
+.day .story { color: var(--text-2); margin: 8px 0 12px; max-width: 72ch; }
+.day details { border: 1px solid var(--line-soft); background: var(--panel); }
+.day summary { cursor: pointer; padding: 8px 12px; font-size: 14px; color: var(--brass); }
+.day ol { list-style: none; margin: 0; padding: 4px 12px 10px; display: grid; gap: 3px; }
+.day ol li { display: grid; grid-template-columns: 50px minmax(0, 1fr); gap: 10px; font-size: 14px; color: var(--text-2); }
+.day ol li time { font-family: var(--mono); font-size: 12px; color: var(--faint); padding-top: 2px; }
+
+.lessons { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.lesson { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--brass-deep); padding: 14px 16px; }
+.lesson b { display: block; font-family: var(--display); font-weight: 400; font-size: 21px; color: var(--parchment); line-height: 1.2; margin-bottom: 6px; }
+.lesson p { margin: 0; font-size: 14.5px; color: var(--text-2); }
+
+.ingame { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 28px; align-items: center; }
+.ingame blockquote { margin: 0; font-family: var(--display); font-size: clamp(28px, 3.6vw, 44px); line-height: 1.1; color: var(--parchment); border-left: 3px solid var(--gold); padding-left: 20px; }
+.ingame p { color: var(--text-2); margin: 0; }
+
+@media (max-width: 900px) {
+  .grid2, .ingame { grid-template-columns: minmax(0, 1fr); }
+  .day { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="index.html">Home</a></li><li><a href="world/">World</a></li><li><a href="bestiary.html">Bestiary</a></li><li><a href="journey.html" aria-current=page>Journey</a></li></ul>
+</div></nav>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <div class="eyebrow">Sprawl · how it is made</div>
+      <h1>One designer, <em>a crew of Claudes</em></h1>
+      <p id="intro"></p>
+    </div>
+    <div class="tally" id="tally" style="--cols:3"></div>
+  </header>
+
+  <section id="pulse" style="margin-top:28px">
+    <div class="sec-head"><h2>The pulse</h2><span class="eyebrow" id="pulseTag"></span></div>
+    <p class="lede">Every bar is one hour, and its height is how many commits landed in it. The shaded bands are the hours from midnight to seven, when the designer is usually asleep. Hover a bar to read it.</p>
+    <div class="box pulse-box"><svg id="pulseChart" role="img" aria-label="Commits per hour since the first commit"></svg></div>
+  </section>
+
+  <section id="days">
+    <div class="sec-head"><h2>Day by day</h2><span class="eyebrow">times are UK time</span></div>
+    <div class="days" id="dayList"></div>
+  </section>
+
+  <section id="how">
+    <div class="grid2">
+      <div>
+        <div class="sec-head"><h2>How the work runs</h2></div>
+        <ol class="flow" id="flow"></ol>
+      </div>
+      <div>
+        <div class="sec-head"><h2>Where the tickets go</h2></div>
+        <p class="lede" style="margin-bottom:12px">Tickets on the job board by area. A ticket can have more than one area.</p>
+        <div class="box areas" id="areas" role="img" aria-label="Tickets per area"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lessons">
+    <div class="sec-head"><h2>Rules learned the hard way</h2></div>
+    <p class="lede">Every one of these started as something going wrong. Each now lives in the notes every agent reads before it starts work.</p>
+    <div class="lessons" id="lessonList"></div>
+  </section>
+
+  <section id="ingame">
+    <div class="sec-head"><h2>And the AI inside the game?</h2></div>
+    <div class="ingame">
+      <blockquote id="quote"></blockquote>
+      <p id="ingameText"></p>
+    </div>
+  </section>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const J = {"stats":{"start":"2026-09-22T16:04:58+01:00","last":"2026-09-25T09:17:41+01:00","days":4,"commits":370,"claude":343,"added":133067,"removed":10162,"prs":85,"merged":80,"issues":281,"closed":81,"tests":1455,"lines":87387,"biomes":44,"creatures":21},"start":"2026-09-22T16:00:00+01:00","perHour":[5,6,3,0,4,1,13,11,25,8,0,0,0,0,0,0,0,0,6,19,10,2,0,2,13,0,0,0,17,26,0,0,0,17,18,3,0,0,0,0,18,32,2,7,0,0,3,9,15,7,0,7,17,15,18,10,0,0,0,0,0,0,0,0,0,1],"marks":[{"h":0.06666666666666667,"label":"First commit"},{"h":1.95,"label":"Runs on Android"},{"h":4.0,"label":"Dead input caught"},{"h":7.55,"label":"Pull requests only"},{"h":17.483333333333334,"label":"Biomes as data"},{"h":25.166666666666668,"label":"Checks on every PR"},{"h":34.71666666666667,"label":"Multiplayer server"},{"h":50.13333333333333,"label":"Slime bosses"},{"h":59.15,"label":"Fishing"},{"h":65.98333333333333,"label":"Deer herds"}],"areas":[["world",166],["gameplay",148],["tech",94],["magic",57],["art",52],["mobile",22],["ui",19]],"days":[{"date":"2026-09-22","commits":43,"opened":45,"closed":2,"prs":[{"n":46,"t":"Git workflow: feature branches, PRs into develop, releases to main","at":"23:35"}],"firsts":[],"title":"From an empty folder to a game in two hours","story":"The first commit landed at four in the afternoon: the magic lattice, emergent quests and dungeons, all in a core with no game engine in it. By six there was a playable slice with an isometric world, casting, villagers, day and night, wolves and the matriarch, and it ran on an Android phone. The evening went on the workshop: a world simulator, a one-command health check, painted art sets cut from the designer's sheets, and a rule that nobody pushes to the main branches. From then on every change arrived as a pull request for the designer to merge."},{"date":"2026-09-23","commits":128,"opened":50,"closed":32,"prs":[{"n":49,"t":"Fix disposition saturation: tanh soft asymptote replaces the hard clamp","at":"00:14"},{"n":50,"t":"Add tools/demo.sh: scripted video demos for the phone dashboard","at":"00:15"},{"n":47,"t":"Determinism: StableHash, Rng64, golden hashes; no GetHashCode in game choices","at":"00:15"},{"n":48,"t":"Call Parish.PassDay() from the game's day cycle","at":"00:24"},{"n":52,"t":"World forge: macro generator passes 1-7 in Core, with 50-seed tests (#17 PR 1 of 3)","at":"00:34"},{"n":54,"t":"Painted character sprites from the ChatGPT sheets (#4)","at":"00:44"},{"n":53,"t":"WorldTool: headless forge with layer PNGs, contact sheets, survey and timings (#19)","at":"00:44"},{"n":55,"t":"Terrain demo: free camera over a generated world, chunks streamed from the macro map (#51)","at":"01:09"},{"n":56,"t":"Biome rules as data: every biome's look, water and edges, with a Biome Lab","at":"09:29"},{"n":78,"t":"World file: forge once, bake, re-read world.sprw on every launch (#18)","at":"11:10"},{"n":88,"t":"Multi-page texture atlas; exclude packed tile/prop PNGs from exports","at":"11:29"},{"n":93,"t":"Audio in game: buses, Audio.cs, sound manifest and settings screen","at":"15:40"},{"n":89,"t":"Generated ambience, nature spots and footsteps (AutumnWoods)","at":"15:40"},{"n":80,"t":"Generated adaptive music prototype","at":"15:40"},{"n":104,"t":"Merge main into develop (28 commits pushed to main + feature/18-world-file)","at":"16:04"},{"n":105,"t":"Release: reunify main with develop","at":"16:08"},{"n":107,"t":"Leaving is an outcome with reasons; friendships; children come of age (#91)","at":"17:08"},{"n":109,"t":"Automatic checks on every pull request (core tests, world sim, game build)","at":"17:10"},{"n":114,"t":"Save state comes back exactly: snapshot and restore for the ledger, parish, progression and bag","at":"17:10"},{"n":116,"t":"Families: partners, pregnancy, births and old age (#111)","at":"21:13"},{"n":117,"t":"The lattice: a screen for the magic system, with smoke over what you have not opened","at":"21:43"},{"n":118,"t":"Biomes form real regions, with buffers between clashing ones (#28)","at":"21:43"},{"n":122,"t":"Painted edges where ground materials meet (terrain transitions)","at":"21:53"}],"firsts":[],"title":"A world forged from a seed","story":"The map stopped being hand-placed. A forge now grows continents, climate, rivers and biomes from one number, and bakes them to a file that is read back on every launch. Biomes became data, drawn in a lab of their own. Music, ambience and footsteps are generated in code. Villagers gained families, births and old age, a lattice screen opened the magic system to the player, and every pull request now runs the tests automatically."},{"date":"2026-09-24","commits":198,"opened":183,"closed":40,"prs":[{"n":123,"t":"Wildlife: crows that flush, rabbits that bolt, essence slimes that merge (#112)","at":"01:04"},{"n":120,"t":"Old worlds keep loading as the generator changes: fixtures, version messages, upgrade world","at":"01:04"},{"n":136,"t":"People from one procedural body: build sliders, and clothes made from what you wear (#125)","at":"02:35"},{"n":119,"t":"Runes: spells written into the ground or onto things, that go off by themselves","at":"02:43"},{"n":132,"t":"Eight new biomes (Part 1 of #108): moor, badlands, salt flats, ash plains, cloud forest, fungal ley wood, mangroves, birch woods","at":"02:43"},{"n":133,"t":"Multiplayer foundation: authoritative server, streamed state, loopback for solo (#106)","at":"02:43"},{"n":121,"t":"Loot has a rarity, read off the magic inside it, and the bag shows it","at":"08:15"},{"n":134,"t":"Settings: interface size, bigger touch buttons, a left-handed layout and reduced motion","at":"08:15"},{"n":135,"t":"Every spell sounds: magic layered from its lattice coordinate (#72)","at":"08:15"},{"n":139,"t":"Minions: every way to get a follower, in Core, proved on a real map (#137)","at":"09:08"},{"n":149,"t":"Multiplayer docs: link the filed follow-ups #140-#147 (#106)","at":"09:08"},{"n":151,"t":"Joined-up path pieces: straights, bends, junctions and dead ends","at":"09:09"},{"n":152,"t":"Dungeon chests hold real loot, the same every time; Delver and Breaker can be earned","at":"09:09"},{"n":153,"t":"World-scale ledger: place ids, indexes that keep queries flat, and compaction of old stories","at":"09:10"},{"n":155,"t":"Rivers and lakes: rain drains to the sea, lakes fill the hollows (#31)","at":"09:10"},{"n":158,"t":"Net test: capped-set stability allows wolf swaps (#157)","at":"09:11"},{"n":159,"t":"First steps: hints that follow what a new player does","at":"09:12"},{"n":154,"t":"Four more biomes (Part 2 of #108): cypress swamp, bog, thorn forest, ley glasslands","at":"10:47"},{"n":169,"t":"Minions, part 2: they grow, live at home, hatch, sell, and necromancy goes dark","at":"13:04"},{"n":163,"t":"Notices are answered by deeds, and paid; the matriarch's death answers the pack (#126)","at":"14:42"},{"n":162,"t":"Essence body v0: registry, act table, and a Body capped by willpower (#127)","at":"14:54"},{"n":168,"t":"People slimmer and crisper: less bulk, a waist, two legs, light with shadow (#166)","at":"15:02"},{"n":160,"t":"Connector: a second pass repairs what its own stairs and bridges cut (#124)","at":"15:13"},{"n":165,"t":"Play the forged world's start area: terrain layer, rivers, 128-tile districts (#128)","at":"15:13"},{"n":173,"t":"Affordable organic cliffs: runs instead of the march, R=16, per-chunk bake (#130)","at":"15:21"},{"n":164,"t":"Frame budget: zero garbage per frame, shadows as quads, a perf check in doctor.sh (#129)","at":"15:22"},{"n":161,"t":"Wolves and the matriarch have voices, made in code and heard where they are (#74)","at":"15:45"},{"n":156,"t":"The game saves: autosave, --continue, and a world clock that cools feuds","at":"15:46"},{"n":150,"t":"Work and trade: workplaces, carried supply, careers that change, a structured day (#115)","at":"15:46"},{"n":148,"t":"Villagers on screen: Core's village lives in the hamlet (#92, slice 1)","at":"16:02"},{"n":177,"t":"Terrain shadows, cliff edges you can read from above, and feet that stay on the ground (#174)","at":"16:03"},{"n":183,"t":"Audio allocates nothing per sound: cached bus names, a plain voice scan (#182)","at":"16:03"},{"n":184,"t":"Money from the book: dregs and crowns, real purses, change and the spread (#170)","at":"16:19"},{"n":193,"t":"Slime bosses, essence drops, and familiars you bind, feed and evolve (#131)","at":"18:08"},{"n":200,"t":"Biomes part 3 (#191): the altitude ladder, and how to climb it and see it","at":"18:08"},{"n":223,"t":"Harden deterministic gameplay placement","at":"20:30"},{"n":254,"t":"Plan: martial magic — melee, archery and hand-to-hand through the lattice","at":"20:40"},{"n":222,"t":"Coalesce autosaves without blocking the game thread","at":"20:56"},{"n":283,"t":"Perf: stop the bottled-slime light check making ~8 KB of garbage a frame (#274)","at":"20:56"},{"n":279,"t":"Motes and rings, core: levels from essence, stat points, talents (#192)","at":"20:56"},{"n":272,"t":"Biomes part 4 (#231): cedar rainforest, salt marsh, maquis, fellfield, geyser field, bamboo, rimewood","at":"20:57"},{"n":278,"t":"Performance capture: validate complete tours and preserve build provenance (#224)","at":"20:58"},{"n":221,"t":"Test the complete magic lattice","at":"20:58"},{"n":201,"t":"Particle system: lattice-derived spell particles and systemic ambience (#113)","at":"20:58"},{"n":310,"t":"Fix: a kill's stakes come from the fight, so trivial kills can't stretch will (#255)","at":"22:07"}],"firsts":[],"title":"The busiest day: everything at once","story":"Nearly two hundred commits from agents working in parallel, each on its own ticket and in its own worktree. People became procedural, one body shaped by sliders and dressed by what they wear. Minions arrived, with every way to win a follower, from food to necromancy. So did an authoritative multiplayer server, voices for the wolves, runes, rarity, money that follows the setting's coin ladder, slime bosses and familiars, particles, rivers on the map, and levels read from absorbed essence. A frame budget kept all of it within what a phone can draw."},{"date":"2026-09-25","commits":1,"opened":3,"closed":7,"prs":[{"n":194,"t":"Fish in the water, and fishing for them (#179, #180)","at":"03:09"},{"n":289,"t":"Perf: bounded long captures, moving tours and hitch attribution (#224)","at":"08:56"},{"n":290,"t":"Figures: bounded worker queue and per-frame integration budgets (#226)","at":"09:01"},{"n":288,"t":"Rootwild: persistent underground biome prototype with stacked paths","at":"09:02"},{"n":291,"t":"HUD: retain drawing commands in independent regions (#228)","at":"09:03"},{"n":287,"t":"Docs: canonical project state and traceable performance evidence (#209)","at":"09:08"},{"n":292,"t":"Simulation: measure settlement day phases before introducing yields (#227)","at":"09:54"},{"n":363,"t":"Agent game windows open in a corner of the screen (#362)","at":"09:54"},{"n":309,"t":"Wildlife: deer herds that graze, freeze and bolt (#293)","at":"09:59"},{"n":313,"t":"Fix: villagers roll their own keyed dice, not one shared System.Random (#256)","at":"09:59"},{"n":202,"t":"Mob drops: a killed wolf leaves its body; skin it for pelt, meat, bone and fang (#185)","at":"10:16"}],"firsts":[],"title":"Water, roots and herds","story":"Fish swim in the lakes and can be caught. An underground root cavern stacks walkable paths on top of one another. Deer graze, freeze and bolt as a herd. The performance tools learned to blame the exact frame that hitched. And this website went up, built from the same data as the game."}],"intro":"Sprawl is being made by one designer working with Claude, Anthropic's AI model. The designer decides what the game is and judges every change. Claude agents write the code, the generators, the tests and the documents, each one working a single ticket in its own copy of the repository. Everything below is read from the project's git history and its GitHub job board.","workflow":[{"t":"The job board","d":"Every piece of work is a GitHub issue with an area (world, magic, gameplay, art, UI, tech, mobile) and a status label. Agents pick a ticket, mark it in progress, and hand it back for review."},{"t":"One ticket, one worktree","d":"Several agents work at once, so each ticket gets its own branch and its own copy of the repository. Nobody switches branches under someone else's feet."},{"t":"Specialists","d":"Agents are briefed for a trade: the art pipeline, the world architect, magic systems, gameplay and QA. Each knows its part of the code and where its responsibility ends."},{"t":"Evidence, not claims","d":"A change is done when there is proof: headless tests that run without the engine, a self-test that drives the game with real key presses, screenshots read back, and scripted video demos."},{"t":"Reviewed from a phone","d":"Finished work appears on a private dashboard as a review card with a before, an after and a demo video. One tap approves it."},{"t":"The human merges","d":"Claude opens pull requests and never merges them. A push guard refuses any direct push to the release and integration branches, so merging is the designer's approval."}],"lessons":[{"rule":"Screenshots prove rendering, not behaviour","story":"An early build looked perfect and ignored every key. The input bindings had been written in a format the engine silently drops. Bindings now live in code, and a self-test presses real keys before any interactive change can land."},{"rule":"Never rewrite history","story":"One session rewrote git history and took a folder of the designer's source art with it. That folder is now kept out of git, backed up, and off limits to every agent."},{"rule":"Only stop your own game","story":"Agents run the game side by side. A blanket 'kill every game' took everyone's runs down, and killing the engine while it quits can leave a process no one can end until the machine reboots. Each tool now waits for, and stops, only its own process."},{"rule":"Silent failure is the worst failure","story":"Without one environment variable, the engine loads the scene and runs none of the game's code, and prints nothing about it. It is set by every script now, and the first thing in the project notes."},{"rule":"Same seed, same world","story":"Terrain, dungeons, loot, creatures and the simulation are all seeded, and a test scans the server's simulation for clocks, threads and unseeded randomness. When villagers were found sharing one random generator, it was a bug, because it made a bug impossible to replay."},{"rule":"Measure the frame, not the feeling","story":"A village frame once made 138 KB of garbage. A performance check now holds draw calls, primitives and garbage per frame to a phone's budget, and it runs before every commit."}],"inGame":{"quote":"AI never computes mechanics. AI computes meaning.","text":"Inside the game, the rule is strict. Every fight, spell and loot roll is deterministic and can be replayed, because a model in the casting path would be slow, unrepeatable and open to a player talking it into a billion damage. The depth comes from combinatorics: four axes of magic give 1,068 legal spells before tiers and resonance, and none of them was written by hand. Where AI does belong is naming things. The first player to discover a new spell may one day get a name and a description generated for it once, and kept as canon for everyone after."}};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const fmt = n => n.toLocaleString("en-GB");
+const plural = (n, w) => `${fmt(n)} ${w}${n === 1 ? "" : "s"}`;
+const AREA = {ui: "UI", tech: "Tech", world: "World", gameplay: "Gameplay", magic: "Magic", art: "Art", mobile: "Mobile"};
+const S = J.stats;
+
+$("intro").textContent = J.intro;
+$("tally").innerHTML = [
+  [S.days, S.days === 1 ? "day" : "days since the first commit"],
+  [fmt(S.commits), `commits, ${fmt(S.claude)} co-written with Claude`],
+  [fmt(S.merged), "pull requests merged"],
+  [fmt(S.issues), `tickets, ${fmt(S.closed)} closed`],
+  [S.tests ? fmt(S.tests) : "–", "automated tests"],
+  [fmt(Math.round(S.lines / 1000)) + "k", "lines of code and scripts"],
+].map(([b, s]) => `<div><b>${b}</b><span>${s}</span></div>`).join("");
+
+// The pulse: commits per hour.
+(() => {
+  const svg = $("pulseChart"), n = J.perHour.length, W = 1100, H = 260, L = 34, R = 10, T = 44, B = 30;
+  const max = Math.max(...J.perHour), bw = (W - L - R) / n, y = v => T + (H - T - B) * (1 - v / max);
+  const start = new Date(J.start);
+  const hourAt = i => new Date(start.getTime() + i * 3600e3);
+  const ukHour = d => +d.toLocaleString("en-GB", {hour: "2-digit", hour12: false, timeZone: "Europe/London"});
+  let g = "";
+  for (let i = 0; i < n; i++) if (ukHour(hourAt(i)) < 7) g += `<rect class="night" x="${L + i * bw}" y="${T - 6}" width="${bw + .5}" height="${H - T - B + 6}"/>`;
+  const step = Math.max(5, Math.ceil(max / 4 / 5) * 5);
+  for (let v = 0; v <= max; v += step) g += `<g class="axis"><line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke-opacity="${v ? .5 : 1}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text></g>`;
+  for (let i = 0; i < n; i++) {
+    const d = hourAt(i), h = ukHour(d);
+    if (h === 0 || i === 0) g += `<g class="axis"><text x="${L + i * bw + 2}" y="${H - 10}">${d.toLocaleDateString("en-GB", {weekday: "short", day: "numeric", month: "short", timeZone: "Europe/London"})}</text></g>`;
+  }
+  J.perHour.forEach((v, i) => {
+    const x = L + i * bw + 1, w = Math.max(1, bw - 2), top = y(v), hgt = H - B - top;
+    const when = hourAt(i).toLocaleString("en-GB", {weekday: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/London"});
+    g += `<rect class="hit" x="${L + i * bw}" y="${T}" width="${bw}" height="${H - T - B}" data-tip="<b>${when}</b><br>${v} commit${v === 1 ? "" : "s"}"/>`;
+    if (v) g += `<path class="bar" d="M${x},${H - B}V${top + Math.min(3, hgt)}q0,-3 3,-3h${w - 6}q3,0 3,3V${H - B}Z"/>`;
+    else g += `<rect class="bar" x="${x}" y="${H - B}" width="0" height="0"/>`;
+  });
+  // Milestones: stagger the labels in two rows so neighbours don't collide.
+  J.marks.forEach((m, k) => {
+    const x = L + m.h * bw, row = k % 2, ly = 14 + row * 15;
+    g += `<g class="mk"><line x1="${x}" x2="${x}" y1="${ly + 4}" y2="${H - B}"/><text x="${x > W - 140 ? x - 3 : x + 3}" y="${ly}" text-anchor="${x > W - 140 ? "end" : "start"}">${esc(m.label)}</text></g>`;
+  });
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.innerHTML = g;
+  $("pulseTag").textContent = `${fmt(S.commits)} commits · ${n} hours`;
+})();
+
+// Tooltip for anything with data-tip.
+const tip = $("tip");
+document.addEventListener("pointermove", e => {
+  const t = e.target.closest("[data-tip]");
+  document.querySelectorAll(".bar.on").forEach(b => b.classList.remove("on"));
+  if (!t) { tip.hidden = true; return; }
+  if (t.classList.contains("hit") && t.nextElementSibling) t.nextElementSibling.classList.add("on");
+  tip.innerHTML = t.dataset.tip; tip.hidden = false;
+  const r = tip.getBoundingClientRect();
+  tip.style.left = Math.min(innerWidth - r.width - 8, e.clientX + 14) + "px";
+  tip.style.top = Math.max(8, e.clientY - r.height - 12) + "px";
+});
+
+// Days.
+$("dayList").innerHTML = J.days.map((d, i) => {
+  const date = new Date(d.date + "T12:00:00");
+  const list = d.prs.length
+    ? `<details><summary>${d.prs.length} pull request${d.prs.length === 1 ? "" : "s"} merged</summary><ol>${d.prs.map(p => `<li><time>${p.at}</time><span>${esc(p.t)}</span></li>`).join("")}</ol></details>`
+    : d.firsts.length ? `<details><summary>The first ${d.firsts.length} commits</summary><ol>${d.firsts.map(c => `<li><time>${c.at}</time><span>${esc(c.s)}</span></li>`).join("")}</ol></details>` : "";
+  return `<article class="day">
+    <div class="when"><b>Day ${i + 1}</b><span>${date.toLocaleDateString("en-GB", {weekday: "long", day: "numeric", month: "long"})}</span>
+      <span>${plural(d.commits, "commit")} · ${plural(d.opened, "ticket")} opened · ${d.closed} closed</span></div>
+    <div>${d.title ? `<h3>${esc(d.title)}</h3>` : ""}${d.story ? `<p class="story">${esc(d.story)}</p>` : ""}${list}</div>
+  </article>`;
+}).join("");
+
+$("flow").innerHTML = J.workflow.map(w => `<li><b>${esc(w.t)}</b><p>${esc(w.d)}</p></li>`).join("");
+const amax = Math.max(...J.areas.map(a => a[1]));
+$("areas").innerHTML = J.areas.map(([a, n]) =>
+  `<div class="row" data-tip="<b>${esc(a)}</b><br>${n} tickets"><span>${esc(AREA[a] || a)}</span><div class="track"><div class="fill" style="width:${(n / amax * 100).toFixed(1)}%"></div></div><b>${n}</b></div>`).join("");
+$("lessonList").innerHTML = J.lessons.map(l => `<div class="lesson"><b>${esc(l.rule)}</b><p>${esc(l.story)}</p></div>`).join("");
+$("quote").textContent = J.inGame.quote;
+$("ingameText").textContent = J.inGame.text;
+</script>
+
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Everything here is generated from the game's own code and data.</span>
+  <span>Built 25 September 2026</span>
+</div></footer>
+</body>
+</html>

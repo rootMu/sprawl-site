@@ -1,0 +1,69 @@
+/* The Sprawl site: one dark world in the game's own UI palette (art/palettes/ui_ref.json),
+   shared by every page. The biome atlas carries its own copy of these tokens. */
+:root {
+  color-scheme: dark;
+  --ground: #141412; --panel: #1c1a17; --raised: #201e1a; --line: #342e26; --line-soft: #26231e;
+  --text: #deddd9; --text-2: #cbc8c0; --muted: #a59e90; --faint: #857a6a;
+  --brass: #c0a070; --brass-deep: #806440; --gold: #ecbb61; --parchment: #dcc8ab;
+  --never: #e06a50; --never-deep: #6e2a20; --leaf: #8fae5a; --sky: #6f9cc4;
+  --display: "IM Fell English", "Iowan Old Style", Georgia, serif;
+  --body: "Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html { background: var(--ground); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--ground); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+img { max-width: 100%; }
+a { color: var(--brass); }
+a:hover { color: var(--gold); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; color: var(--parchment); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+button { font: inherit; color: inherit; }
+.eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--brass); }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; }
+.pixel { image-rendering: pixelated; }
+
+/* Site bar */
+.site-nav { position: sticky; top: 0; z-index: 50; background: rgba(20, 20, 18, .92); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
+.site-nav .in { max-width: 1320px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; gap: 4px 22px; min-height: 52px; flex-wrap: wrap; }
+.site-nav .mark { font-family: var(--display); font-size: 24px; color: var(--parchment); text-decoration: none; letter-spacing: .02em; margin-right: auto; }
+.site-nav .mark span { color: var(--brass); font-style: italic; }
+.site-nav ul { list-style: none; display: flex; gap: 2px 18px; margin: 0; padding: 0; flex-wrap: wrap; }
+.site-nav ul a { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 14px 0 12px; display: block; border-bottom: 2px solid transparent; }
+.site-nav ul a:hover { color: var(--parchment); }
+.site-nav ul a[aria-current] { color: var(--gold); border-bottom-color: var(--gold); }
+
+.site-foot { border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; }
+.site-foot .in { max-width: 1320px; margin: 0 auto; padding: 22px 20px 40px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+/* Shared page furniture */
+.mast { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 28px 48px; align-items: end; padding-bottom: 26px; border-bottom: 1px solid var(--line); }
+.mast h1 { font-size: clamp(40px, 6.4vw, 78px); line-height: .95; letter-spacing: -.01em; }
+.mast h1 em { color: var(--brass); font-style: italic; }
+.mast p { color: var(--text-2); max-width: 60ch; margin: 14px 0 0; font-size: 17px; }
+.tally { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); border: 1px solid var(--line); }
+.tally div { padding: 12px 14px; border-right: 1px solid var(--line); }
+.tally div:last-child { border-right: 0; }
+.tally b { display: block; font-family: var(--display); font-weight: 400; font-size: 34px; color: var(--parchment); line-height: 1; }
+.tally span { font-size: 12px; color: var(--muted); }
+section { padding-block: 8px 44px; }
+section + section { border-top: 1px solid var(--line-soft); padding-top: 32px; }
+.sec-head { display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
+.sec-head h2 { font-size: clamp(28px, 3.4vw, 40px); }
+.lede { color: var(--text-2); max-width: 68ch; margin: 6px 0 18px; }
+.box { background: var(--panel); border: 1px solid var(--line); }
+.tip { position: fixed; z-index: 60; pointer-events: none; max-width: 300px; background: var(--raised); border: 1px solid var(--brass-deep); padding: 8px 10px; font-size: 13px; color: var(--text); box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+.tip b { color: var(--parchment); font-weight: 500; }
+.pill { display: inline-block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+
+@media (max-width: 720px) {
+  .mast { grid-template-columns: minmax(0, 1fr); }
+  .tally { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tally div:nth-child(2n) { border-right: 0; }
+  .tally div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .tally b { font-size: 26px; }
+  .wrap, .site-nav .in, .site-foot .in { padding-inline: 16px; }
+  .site-nav ul { gap: 2px 14px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }

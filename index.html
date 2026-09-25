@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — an isometric open-world magic RPG</title>
+<meta name="description" content="Everyone can handle magic; almost nobody throws fireballs. An isometric open-world RPG forged from a seed.">
+<meta property="og:title" content="Sprawl — an isometric open-world magic RPG">
+<meta property="og:description" content="Everyone can handle magic; almost nobody throws fireballs. An isometric open-world RPG forged from a seed.">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.hero { position: relative; min-height: min(78vh, 720px); display: grid; align-items: end; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,20,18,.1) 0%, rgba(20,20,18,.35) 45%, rgba(20,20,18,.96) 100%); }
+.hero .in { position: relative; z-index: 1; max-width: 1320px; width: 100%; margin: 0 auto; padding: 0 20px 44px; }
+.hero h1 { font-size: clamp(64px, 12vw, 150px); line-height: .85; letter-spacing: -.01em; }
+.hero p { font-family: var(--display); font-style: italic; font-size: clamp(22px, 2.8vw, 32px); color: var(--parchment); max-width: 30ch; margin: 14px 0 0; line-height: 1.2; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn { display: inline-block; padding: 9px 16px; border: 1px solid var(--brass-deep); background: rgba(28,26,23,.85); color: var(--parchment); text-decoration: none; font-size: 15px; }
+.btn:hover { border-color: var(--gold); color: var(--gold); }
+.btn.main { background: var(--brass); color: #141412; border-color: var(--brass); }
+.btn.main:hover { background: var(--gold); color: #141412; }
+
+.idea { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px 48px; align-items: start; }
+.idea .big { font-family: var(--display); font-size: clamp(26px, 3vw, 36px); line-height: 1.2; color: var(--parchment); margin: 0; }
+.idea p { color: var(--text-2); margin: 0 0 12px; }
+
+.lattice { padding: 16px; }
+.axes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.axis h3 { font-size: 20px; }
+.axis .q { font-size: 12.5px; color: var(--muted); margin: 0 0 8px; }
+.axis .opts { display: flex; flex-wrap: wrap; gap: 5px; }
+.axis button { background: var(--raised); border: 1px solid var(--line); padding: 3px 9px; font-size: 13.5px; cursor: pointer; color: var(--text-2); border-radius: 999px; }
+.axis button:hover { border-color: var(--brass-deep); }
+.axis button[aria-pressed="true"] { border-color: var(--gold); color: #141412; background: var(--gold); }
+.readout { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.readout div b { display: block; font-family: var(--display); font-weight: 400; font-size: 22px; color: var(--parchment); }
+.readout div span { font-size: 13.5px; color: var(--text-2); }
+.presets { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin-top: 16px; font-size: 13px; color: var(--muted); }
+.presets button { background: none; border: 0; border-bottom: 1px dotted var(--brass-deep); padding: 0; cursor: pointer; color: var(--brass); font-size: 14px; }
+.presets button:hover { color: var(--gold); }
+.named-as { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--gold); grid-column: 1 / -1; }
+.lattice .sum { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.pillar { align-self: start; background: var(--panel); border: 1px solid var(--line); display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color .15s; }
+a.pillar:hover { border-color: var(--brass-deep); }
+.pillar .pic { aspect-ratio: 16 / 9; background: #0d0d0c; overflow: hidden; display: grid; place-items: center; }
+.pillar .pic img { width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+.pillar .pic img.contain { object-fit: contain; }
+.pillar .txt { padding: 12px 14px 14px; }
+.pillar h3 { font-size: 24px; line-height: 1.1; }
+.pillar p { margin: 6px 0 0; color: var(--text-2); font-size: 15px; }
+.pillar .go { display: block; margin-top: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--brass); }
+
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.gallery figure { margin: 0; background: var(--panel); border: 1px solid var(--line); }
+.gallery img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.gallery figcaption { padding: 8px 12px 10px; font-size: 14px; color: var(--text-2); }
+
+.status { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+.status p { color: var(--text-2); margin: 0 0 10px; }
+
+@media (max-width: 900px) {
+  .idea, .status { grid-template-columns: minmax(0, 1fr); }
+  .axes, .readout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pillars { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .pillars, .gallery { grid-template-columns: minmax(0, 1fr); }
+  .hero .in { padding-inline: 16px; }
+}
+</style>
+
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="index.html" aria-current=page>Home</a></li><li><a href="world/">World</a></li><li><a href="bestiary.html">Bestiary</a></li><li><a href="journey.html">Journey</a></li></ul>
+</div></nav>
+
+<header class="hero">
+  <img id="heroImg" alt="A hamlet in Sprawl at dusk: stone cottages, lanterns and autumn woods">
+  <div class="in">
+    <div class="eyebrow">An isometric open-world magic RPG · in development</div>
+    <h1>Sprawl</h1>
+    <p>Everyone can handle magic. Almost nobody throws fireballs.</p>
+    <div class="cta"><a class="btn main" href="world/">Explore the world</a><a class="btn" href="bestiary.html">Meet the creatures</a><a class="btn" href="journey.html">How it's being made</a></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section id="idea">
+    <div class="idea">
+      <p class="big">Magic is a substrate, not a class. A brawler is not a fighter instead of a mage. He is a mage who only ever learned to point the current inward, into bone and skin and the moment of impact.</p>
+      <div>
+        <p>A spell in Sprawl is not an entry in a list. It is a coordinate: one pick from each of four axes. What the current is made of, where you point it, the shape it takes and its rule in time. Nobody wrote a spell list, and nobody needed to.</p>
+        <p>Who you become is measured from how you actually play, and the world gives you a name for it. The quests you are offered come out of what the village has actually suffered, and the creatures you meet are living their own lives when you arrive.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="lattice">
+    <div class="sec-head"><h2>Build a spell</h2><span class="eyebrow">the magic lattice</span></div>
+    <p class="lede">Pick one from each axis. Every combination is a real coordinate in the game's lattice, and the game works out whether it is legal, what it costs and how it looks and sounds.</p>
+    <div class="box lattice">
+      <div class="axes" id="axes"></div>
+      <div class="presets" id="presets"></div>
+      <div class="readout" id="readout" aria-live="polite"></div>
+      <p class="sum">12 essences × 6 vectors × 10 forms × 6 bindings = 4,320 coordinates, of which 1,068 are legal before tiers and resonance. When two essences meet, they combine: fire and wind roar, fire and water make blinding steam, lightning chains along metal.</p>
+    </div>
+  </section>
+
+  <section id="pillars">
+    <div class="sec-head"><h2>What's in the world</h2></div>
+    <div class="pillars" id="pillarList"></div>
+  </section>
+
+  <section id="gallery">
+    <div class="sec-head"><h2>From the game</h2><span class="eyebrow">screenshots taken by the build</span></div>
+    <div class="gallery" id="gal"></div>
+  </section>
+
+  <section id="status">
+    <div class="status">
+      <div>
+        <div class="sec-head"><h2>Where it stands</h2></div>
+        <p>Sprawl is early. It runs on desktop and on Android. You can walk a painted autumn hamlet, cast from the full lattice, fish, fight wolves and the matriarch, and answer notices the village posts about its real troubles. The generated world, followers and multiplayer work in the engine-free core and are on their way into the game.</p>
+        <p><a href="journey.html">Read how it's being built</a>, one ticket at a time, by one designer and a crew of Claude agents.</p>
+      </div>
+      <div class="tally" id="tally" style="--cols:2"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+const H = {"stats":{"start":"2026-09-22T16:04:58+01:00","last":"2026-09-25T09:17:41+01:00","days":4,"commits":370,"claude":343,"added":133067,"removed":10162,"prs":85,"merged":80,"issues":281,"closed":81,"tests":1455,"lines":87387,"biomes":44,"creatures":21},"shots":{"hero":"img/shots/hero.png","village":"img/shots/village.png","night":"img/shots/night.png","wolves":"img/shots/wolves.png","magic":"img/shots/magic.png"}};
+const $ = id => document.getElementById(id);
+const S = H.stats, fmt = n => n.toLocaleString("en-GB");
+$("heroImg").src = H.shots.hero || H.shots.village;
+
+const AX = [
+  {n: "Essence", q: "what the current is made of", o: [["Ignis", "heat, appetite, acceleration"], ["Glacies", "cold, stillness, preservation"], ["Petra", "stone, mass, refusal to move"], ["Ventus", "air, pressure, displacement"], ["Unda", "water, flow, dissolution"], ["Fulgur", "lightning, discharge, the sudden yes"], ["Umbra", "shadow, concealment, entropy"], ["Lumen", "light, revelation, judgement"], ["Vita", "growth, flesh, becoming"], ["Mors", "decay, ending, the debt"], ["Ferrum", "metal, edge, structure"], ["Vox", "sound, resonance, command"]]},
+  {n: "Vector", q: "where it is pointed", o: [["Inward", "into your own body: the brawler, the stone-skinned"], ["Outward", "projected away from you: the artillery mage"], ["Bound", "fixed into an object you carry: the flaming blade"], ["Inscribed", "placed into the ground: the witch and her traps"], ["Ambient", "a field that hangs around you: the warden"], ["Tethered", "run down a link to another creature: the curse-layer"]]},
+  {n: "Form", q: "the shape it takes", o: ["Bolt", "Nova", "Beam", "Cone", "Ward", "Sigil", "Mantle", "Surge", "Lure", "Weave"].map(f => [f, "the shape of the expression"])},
+  {n: "Binding", q: "its rule in time", o: [["Instant", "happens and is over"], ["Sustained", "channelled, draining while held"], ["Latent", "armed and waiting, like a buried rune"], ["Reactive", "fires on a condition: struck, hurt, seen"], ["Recurring", "pulses on an interval"], ["Permanent", "paid for once, in something that does not come back"]]},
+];
+const pick = [0, 1, 0, 0];
+const KNOWN = [["Fireball", "Ignis", "Outward", "Bolt", "Instant"], ["Stone Skin", "Petra", "Inward", "Mantle", "Sustained"],
+  ["Iron Knuckles", "Ferrum", "Inward", "Surge", "Reactive"], ["The witch's buried flame-rune", "Ignis", "Inscribed", "Sigil", "Latent"],
+  ["Wolf-shape", "Vita", "Inward", "Weave", "Sustained"], ["Hunter's curse", "Mors", "Tethered", "Lure", "Recurring"], ["Lantern-ward", "Lumen", "Ambient", "Ward", "Sustained"]];
+$("presets").innerHTML = "Try: " + KNOWN.map((k, i) => `<button data-k="${i}">${k[0]}</button>`).join("");
+$("presets").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return;
+  KNOWN[+b.dataset.k].slice(1).forEach((v, i) => pick[i] = AX[i].o.findIndex(o => o[0] === v)); drawLattice(); });
+function drawLattice() {
+  $("axes").innerHTML = AX.map((a, i) => `<div class="axis"><h3>${a.n}</h3><p class="q">${a.q}</p><div class="opts">${a.o.map((o, j) =>
+    `<button data-a="${i}" data-o="${j}" aria-pressed="${pick[i] === j}">${o[0]}</button>`).join("")}</div></div>`).join("");
+  const k = KNOWN.find(k => k.slice(1).every((v, i) => AX[i].o[pick[i]][0] === v));
+  $("readout").innerHTML = `<div class="named-as">${k ? k[0] : "A coordinate nobody has named yet"}</div>` +
+    AX.map((a, i) => `<div><b>${a.o[pick[i]][0]}</b><span>${i === 2 ? "the shape it takes" : a.o[pick[i]][1]}</span></div>`).join("");
+}
+$("axes").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; pick[+b.dataset.a] = +b.dataset.o; drawLattice(); });
+drawLattice();
+
+const P = [
+  {t: "A world forged from a seed", d: `Continents, climate, rivers and ${S.biomes} biomes grow from one number, and a table of neighbours decides which lands may meet.`, img: "img/world_map.png", href: "world/", go: "The world atlas"},
+  {t: "Creatures with minds", d: "Crows flush in a ripple, deer bolt as a herd, slimes condense wherever an essence runs strong, and a pack you anger sends its matriarch.", img: H.shots.wolves, href: "bestiary.html", go: "The bestiary"},
+  {t: "People from one body", d: "Everyone is the same procedural body shaped by sliders for muscle, fat, height and age, and dressed by what they actually wear.", img: "img/cast.png", contain: true},
+  {t: "Quests nobody wrote", d: "The village keeps a ledger of what happened to it. The notices on its board come from real grievances, and deeds answer them."},
+  {t: "Followers and the dark arts", d: "Befriend, trap, charm or breed a follower, bind a slime familiar, or raise the dead, and the village remembers what you did."},
+  {t: "Built to be shared", d: "An authoritative server already streams the world to headless bots over the network. Solo play will run the same server inside the game."},
+];
+$("pillarList").innerHTML = P.map(p => {
+  const inner = `${p.img ? `<div class="pic"><img src="${p.img}" alt="" loading="lazy"${p.contain ? ' class="contain"' : ""}></div>` : ""}<div class="txt"><h3>${p.t}</h3><p>${p.d}</p>${p.go ? `<span class="go">${p.go} →</span>` : ""}</div>`;
+  return p.href ? `<a class="pillar" href="${p.href}">${inner}</a>` : `<div class="pillar">${inner}</div>`;
+}).join("");
+
+const G = [["village", "The hamlet by day. The notice board is always in view: the Grey Pack has been at the miller's flock."], ["night", "The same hamlet after dark. Windows and lanterns light up on their own."], ["wolves", "At the wolves' den, a short walk out of the village."], ["magic", "Runes armed in the ground, waiting to go off."]];
+$("gal").innerHTML = G.filter(([k]) => H.shots[k]).map(([k, c]) => `<figure><img src="${H.shots[k]}" alt="${c}" loading="lazy" width="640" height="360"><figcaption>${c}</figcaption></figure>`).join("");
+
+$("tally").innerHTML = [[S.days, "days of work so far"], [fmt(S.commits), "commits"], [S.biomes, "biomes"], [S.creatures, "creatures working"]]
+  .map(([b, s]) => `<div><b>${b}</b><span>${s}</span></div>`).join("");
+</script>
+
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Everything here is generated from the game's own code and data.</span>
+  <span>Built 25 September 2026</span>
+</div></footer>
+</body>
+</html>
