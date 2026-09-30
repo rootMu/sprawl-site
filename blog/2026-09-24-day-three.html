@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Day three: forty-four biomes, one body for everyone, and money from the book</title>
+<meta name="description" content="Day three: forty-four biomes, one body for everyone, and money from the book">
+<meta property="og:title" content="Sprawl — Day three: forty-four biomes, one body for everyone, and money from the book">
+<meta property="og:description" content="Day three: forty-four biomes, one body for everyone, and money from the book">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Day three: forty-four biomes, one body for everyone, and money from the book</h1>
+<p><em>24 September 2026 · Day 3</em></p>
+<p class="lede">The busiest day yet, with more than forty pull requests merged. People are now drawn from a single procedural body. The world has 44 biomes stacked by altitude, and the hamlet sits in a forged start area with rivers. Money now works the way it does in the book, with real coins and change. Minions, runes, loot, saving and a multiplayer server all landed as well.</p>
+<figure><img src="../img/blog/docs/site/shots/forged-start.png" alt="The forged start area: the hamlet in a world grown from a seed" loading="lazy"></figure>
+<h2>Everyone is one body</h2>
+<p>Sprawl&#x27;s people used to be painted sprites. Now everyone is drawn from one procedural body, with sliders for muscle, fat, height, shape and age, dressed by whatever that person is wearing. Clothes are items grown out of the body, so a cloak fits a child and a blacksmith alike. A small renderer in the engine-free core draws them straight into sprite sheets.</p>
+<figure><img src="../img/blog/docs/site/shots/builds.png" alt="One body, nine builds" loading="lazy"></figure>
+<p>The first pass came out too bulky. By lunchtime the bodies were slimmer and crisper, with a waist, two legs, and light and shadow to match the painted world.</p>
+<figure><img src="../img/blog/docs/site/shots/villagers.png" alt="The village&#x27;s people, slimmer and lit like the painted world" loading="lazy"></figure>
+<h2>Forty-four biomes, on a ladder</h2>
+<p>Nineteen biomes became forty-four over the course of the day: moor, badlands, salt flats, cloud forest, mangroves, bog, thorn forest, and an altitude ladder where treeline, alpine meadow and karst sit where the air is thin enough for them, among many others. Climb any mountain now and the country changes under your feet: woods give way to pine, then to the last stunted trees, then to bare rock and snow.</p>
+<p>Rivers and lakes came too. Rain drains to the sea, lakes fill the hollows, and no river ever runs uphill. The forge&#x27;s start area is now playable, with a pass that repairs any stairs and bridges its own rivers cut through.</p>
+<h2>Money from the book</h2>
+<p>The author&#x27;s book sets how money works in this world, and the game now follows it. There&#x27;s a ladder of coins, each worth ten of the one below. Purses hold real coins, and paying means making change. There is also a spread: a stall can&#x27;t break a gold coin, so you have to find a money changer, and the changer takes a cut.</p>
+<h2>Things that follow you home</h2>
+<p>Minions arrived in the simulator: fifteen ways to get a follower, from food and nets to charm and raising the dead. Followers grow by doing things, live in pens and coops and crypts, lay eggs that hatch and imprint on you, and can be bought and sold. It all works on real maps in the simulator, but it isn&#x27;t in the playable game yet.</p>
+<p>Wildlife got its own systems too. Crows flush and rabbits bolt. Essence slimes merge into bosses, and you can bind one as a familiar, then feed it and evolve it. Runes are spells written into the ground or onto things that go off by themselves. Loot now carries a rarity read off the magic inside it, and dungeon chests hold real loot, the same every time for a given seed.</p>
+<figure><img src="../img/blog/docs/site/shots/rabbits.png" alt="Rabbits at the edge of a wood; one has sat up, watching you" loading="lazy"></figure>
+<figure><img src="../img/blog/docs/site/shots/fire-slimes.png" alt="Fire slimes glowing at the heart of a fire dungeon" loading="lazy"></figure>
+<h2>Under the bonnet</h2>
+<p>The game now saves: an autosave, a way to continue where you left off, and a world clock that cools feuds while time passes. A frame budget check runs before every change is accepted, after a village frame&#x27;s wasted memory dropped by more than a hundredfold. Every spell now sounds, layered from its own coordinate in the lattice, and wolves and the matriarch got voices made in code. An authoritative server prototype streams the world to a thousand simulated players over the network, though the game doesn&#x27;t play through it yet.</p>
+<h2>Five research agents</h2>
+<p>The team also sent five research agents through decades of RPG postmortems, talks and design essays, each having read Sprawl&#x27;s design first. They agreed on five things, and the one that stings is that a simulation nobody can see is worth nothing. The villages are rich underneath, but on screen they are figures walking. That became a batch of future work: villagers who say what they decided, and history you can see in place names.</p>
+<h2>Where it stands tonight</h2>
+<figure><img src="../img/blog/docs/site/shots/hamlet-dusk.png" alt="The hamlet at dusk, tonight" loading="lazy"></figure>
+<p>Playable now: a forged autumn world with terraces, cliffs and rivers, and a hamlet of procedural people living their days in it. You can cast four-axis magic, answer notices by deed and get paid in real coin. There are wolves and a matriarch, slimes and familiars, dungeons with seeded loot, runes and saving. It plays on desktop and Android.</p>
+<p>Not yet: most biomes have no painted art, and minions don&#x27;t appear in the game. The villagers don&#x27;t yet tell you what they are thinking. Multiplayer runs headless only, and melee and archery are still a plan.</p>
+<p>End of day three: 1,989 passing tests, 67 pull requests merged, 44 biomes.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 30 September 2026</span>
+</div></footer>
+</body>
+</html>

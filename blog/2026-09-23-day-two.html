@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Day two: a world forged from a seed, and people with lives</title>
+<meta name="description" content="Day two: a world forged from a seed, and people with lives">
+<meta property="og:title" content="Sprawl — Day two: a world forged from a seed, and people with lives">
+<meta property="og:description" content="Day two: a world forged from a seed, and people with lives">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Day two: a world forged from a seed, and people with lives</h1>
+<p><em>23 September 2026 · Day 2</em></p>
+<p class="lede">Day two was about depth. The world forge started making biomes that form real regions, and the world is now written to disk once and read back. The villagers got families and friendships, and they can leave home for reasons. The game also got sound, all of it generated from code.</p>
+<figure><img src="../img/blog/docs/site/shots/thornwick-lives.png" alt="Villager explorer: every person in the hamlet, their temperament, skills and life story" loading="lazy"></figure>
+<h2>Biomes as data</h2>
+<p>Overnight the biomes became data files instead of code. Each file says what a biome&#x27;s ground, trees, water and edges look like. A biome lab renders every one of them to a sheet, so a biome can be judged before any art has been painted for it. A blind critique of those sheets came back saying water didn&#x27;t read as water and several biomes looked alike, and both were fixed before breakfast.</p>
+<p>By the evening, biomes formed real regions instead of scattering at random. Some pairs should never touch, like glacier and grassland, or jungle and taiga. The forge finds every such pair and turns one side into a buffer biome that can sit next to both, repeating until none are left. That is how the world grows transitions instead of seams.</p>
+<h2>Forge once, read forever</h2>
+<p>A world is now forged once, baked and written to disk. Every launch after that reads it back from the file, in a few milliseconds. Old worlds keep loading when the generator changes, and fixture worlds in the tests make sure of it.</p>
+<h2>People with lives</h2>
+<p>The headless simulator can run a village for years in a few seconds, and on day two its villagers became people. They form families, with partners, pregnancy, births, children who come of age and old age. They build friendships, and grudges that cool over time. Leaving home became an outcome with reasons: a villager might be driven out by the guards, set off to adventure, or reform, and each one can be traced back through the ledger to the day it happened.</p>
+<p>The team also built a research prototype of notices answered by deeds. Kill the wolves troubling a farm, and the notice posted against them is settled, and the villager who posted it pays you.</p>
+<figure><img src="../img/blog/docs/site/shots/notices-paid.png" alt="Killing the wolves settles the notices, and the villager pays" loading="lazy"></figure>
+<h2>Cliffs that aren&#x27;t boxes</h2>
+<p>The terraced world had cliffs that looked like stacked crates. Four fixes were mocked up on the same patch of map, and one was picked: organic edges, stone faces, and grass hanging over the lip.</p>
+<figure><img src="../img/blog/docs/site/shots/cliffs-before-after.png" alt="Cliffs before (top) and after (bottom)" loading="lazy"></figure>
+<h2>Sound from code</h2>
+<p>Everything Sprawl ships is made by its own code, including the sound. Day two brought an adaptive music prototype that shifts between calm, sneaking and fighting, with ambience for the autumn woods: birds by day, then owls and crickets at dusk. Footsteps change between leaf litter, dirt, stone and grass.</p>
+<h2>The lattice gets a screen</h2>
+<p>The magic system got its own screen. The lattice shows the cells you hold, and smoke hides what you haven&#x27;t opened yet, with rumours of what lies inside.</p>
+<figure><img src="../img/blog/docs/site/shots/lattice.png" alt="The lattice: what you hold, and the smoke over what you don&#x27;t" loading="lazy"></figure>
+<h2>The safety nets</h2>
+<p>Every change now runs the core tests, the world simulator and a full game build before it can be accepted. A save snapshot brings the ledger, parish, progression and bag back exactly as they were.</p>
+<p>End of day two: about 400 tests, a forge that makes regions, and a village you can read like a novel.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 30 September 2026</span>
+</div></footer>
+</body>
+</html>

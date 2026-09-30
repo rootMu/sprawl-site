@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Day 5: colossi, currents and coastlines</title>
+<meta name="description" content="Day 5: colossi, currents and coastlines">
+<meta property="og:title" content="Sprawl — Day 5: colossi, currents and coastlines">
+<meta property="og:description" content="Day 5: colossi, currents and coastlines">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Day 5: colossi, currents and coastlines</h1>
+<p><em>30 September 2026 · Day 9</em></p>
+<p class="lede">Swimming, paddled boats and a deep-ocean ambush are no longer &quot;in review&quot; — you can wade in, paddle out and get pulled under. Alongside that, eight design spikes lay the groundwork for world-scale creatures that don&#x27;t play like an oversized enemy with a bigger health bar.</p>
+<figure><img src="../img/blog/docs/site/shots/water-shallows.png" alt="Sandy shallows stepping down into a deep, fish-filled lake" loading="lazy"></figure>
+<h2>Into the water, and further out</h2>
+<p>The last post described swimming and boats as still open for review. Both are merged now, along with the deep-ocean ambush they were built to lead to. You can wade from the shore into deeper water, then swim; a paddled boat lets you cross open water instead, and can carry cargo along with you. Push out far enough and something in the deep can take an interest in your hull.</p>
+<p>This came out of a genuinely messy stack: swimming, the ocean encounter and the boats work had all been developed as separate branches sharing the same input-handling repair underneath them, and merging them without losing any of that history took several passes. The three are stable together now, with the full test suite passing on the merged result. Not yet in this: the Lost Continent, diving gear and underwater combat explored alongside swimming remain a design idea, not a playable feature, and boats still need a hands-on pass for how they feel to steer.</p>
+<h2>Eight ways to be enormous</h2>
+<p>A dragon, a leviathan or a world-shaping worm should not just be an ordinary enemy scaled up. This week&#x27;s work is eight design explorations, each taking one honest answer to what a colossal creature actually does all the time it isn&#x27;t fighting you. A sleeping giant can be discovered from an overlook and walked beside while it stays alive and reactive. A migrating one behaves as a regional event, with a route, trampled ground and tracks, rather than a creature replaying itself in a loop. A burrowing one opens trenches, sinkholes and tunnel mouths across a region as it passes beneath. A dying one becomes a temporary ecosystem, a wounded leviathan or beached dragon reshaping the area around it for months before it&#x27;s gone, and once dead its bones and ribs become geography rather than decoration, with harvesting and communities that grow up around them. A divine one gathers belief and reverence from what different communities choose to believe about it, not from its size alone. A predatory one carries territory, hunger and telegraphed danger a player can read and escape, distinct from an ordinary fight. And an unknown one stays a mystery, giving only evidence: tracks, disturbed ground, a story that never fully resolves.</p>
+<p>None of this is a colossus you can meet in the game yet. What&#x27;s merged is the underlying idea and the rules for each case, and how a moving giant can keep going without every region around it needing to stay loaded. Building an actual creature on top of any of these is the next, separate piece of work.</p>
+<h2>Next</h2>
+<p>Turning the colossus explorations into one real, renderable creature is the obvious next step, along with a hands-on pass on how swimming and boats actually feel to play. Merchants, wandering traders and a personal library of procedural books are still stacked up in review, along with connecting the world-streaming foundation to real travel across a continent instead of a bounded starting region.</p>
+<p>End of day 5: swimming, boats and a deep-ocean ambush now playable, eight colossus explorations in the design, and the water world getting bigger by the day.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 30 September 2026</span>
+</div></footer>
+</body>
+</html>

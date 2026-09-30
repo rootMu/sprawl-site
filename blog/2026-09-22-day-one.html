@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Day one: from an empty folder to wolves on a phone</title>
+<meta name="description" content="Day one: from an empty folder to wolves on a phone">
+<meta property="og:title" content="Sprawl — Day one: from an empty folder to wolves on a phone">
+<meta property="og:description" content="Day one: from an empty folder to wolves on a phone">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Day one: from an empty folder to wolves on a phone</h1>
+<p><em>22 September 2026 · Day 1</em></p>
+<p class="lede">In one afternoon Sprawl went from nothing to a walkable world with magic, villagers, a notice board nobody wrote and a wolf pack that holds a grudge, running on Android. By midnight the world was drawn in painted autumn tiles.</p>
+<figure><img src="../img/blog/docs/site/shots/hamlet-dusk.png" alt="The hamlet at dusk" loading="lazy"></figure>
+<h2>The idea</h2>
+<p>Sprawl is an open-world isometric RPG built on one bet: magic is a substrate, not a class. Everyone in the world can handle it, and almost nobody throws fireballs. A brawler isn&#x27;t &quot;a fighter instead of a mage.&quot; He is a mage who only ever learned to point the current inward, into bone and skin and the moment of impact.</p>
+<p>A spell is a point on four axes: what it&#x27;s made of, where it points, the shape it takes, and how long it holds. That gives over a thousand legal spells before anything is tuned, and nobody had to write a spell list.</p>
+<h2>The afternoon</h2>
+<p>The first commit, at four o&#x27;clock, was the core that everything else stands on: the magic lattice, a disposition that measures how you actually play, and quests that emerge from what happens rather than being scripted. None of it touches the game engine, so it can be tested in seconds and run on a server later.</p>
+<p>After that the pieces came quickly. A heightmapped world grew water and woodland in clumps rather than noise. Casting into the world had every effect checked for legality and cost. A hamlet of procedurally built houses, villagers and a day and night cycle came together, with lit windows after dark. Touch controls landed, and by early evening the game built, installed and ran on Android. Then came wolves and combat, and the loop closed with a fight against the pack&#x27;s matriarch.</p>
+<h2>Nobody scripted the matriarch</h2>
+<p>Kill enough wolves and the pack sends its matriarch after you. There is no rule anywhere in the code that checks how many you&#x27;ve killed. Every act in the world is written to a ledger with its cause. When someone&#x27;s needs are hurt, the ledger holds a grievance, and the pack&#x27;s grievance against you grows until the pack does something about it.</p>
+<p>The parish notice board works the same way. Villagers who can write post petitions about the things that are actually wronging them. A villager who can&#x27;t write builds up pressure instead, and eventually acts on it.</p>
+<h2>The bug that taught us to test input</h2>
+<p>At eight in the evening the build looked fine and did nothing: the scene loaded, but not one key worked. The key bindings had been written by hand into Godot&#x27;s project file, in a format Godot silently reads as nothing at all. Screenshots all looked perfect, because a screenshot proves the game renders, not that it responds.</p>
+<p>The fix came with a rule that has held ever since: an automated check presses real keys and confirms the game reacts, and every change to input or on-screen controls has to pass it.</p>
+<h2>Painted by evening</h2>
+<p>The art target is dark, painterly and high-contrast: deep shadows and glowing lights. The first slice used ground generated from code, which didn&#x27;t look like that. So in the evening the team built tools that cut tiles out of painted reference sheets, fit each piece to the isometric grid and packed them into art sets. Autumn became the default, with summer as an alternative, and the stone cottages were painted to match, with windows that light up after dark.</p>
+<figure><img src="../img/blog/docs/site/shots/painted-before-after.png" alt="Before and after: generated ground on the left, the painted autumn set on the right" loading="lazy"></figure>
+<p>The HUD got the same treatment the same night: warm dark panels with bronze frames, and slots big enough to tap.</p>
+<p>End of day one: 240 tests, one hamlet, one wolf pack, and a game you can hold in your hand.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 30 September 2026</span>
+</div></footer>
+</body>
+</html>
