@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Day 13: natural stone, golden grass and lands that blend</title>
+<meta name="description" content="Day 13: natural stone, golden grass and lands that blend">
+<meta property="og:title" content="Sprawl — Day 13: natural stone, golden grass and lands that blend">
+<meta property="og:description" content="Day 13: natural stone, golden grass and lands that blend">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Day 13: natural stone, golden grass and lands that blend</h1>
+<p><em>4 October 2026 · Day 13</em></p>
+<p class="lede">The new art style&#x27;s stone got its yes: it now looks like real broken rock, and the first golden grass grows at its feet. The plan to take that look across every biome is written, the world can now work out how one land should blend into the next instead of meeting it in a line, and banners belong to someone, with a history you can learn to read. Underneath, saves keep the village and the dungeons you have looted, a full essence offers you a vow, and the merchants no longer freeze the launch.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-stone-cliffs.png" alt="A cliff of broken grey-violet rock in late sun, golden grass along its top edges and a red-leaved tree beside it" loading="lazy"></figure>
+<p><em>Rock walls three levels high and more, drawn entirely by the game&#x27;s own code. An offline still from the style lab, shown at twice size; it is not in the game yet.</em></p>
+<h2>Stone that looks like rock</h2>
+<p>Last time the art style called Sculpted Pixels was on trial, and its cliffs were the weak part: clean boxes where the reference picture has broken corners. This round treats a wall as a mass of rock split along its joints. Columns stand out of the wall or sit back into it, sloping cracks break them into blocks, and wedges are knocked out of the corners. Each face catches the one afternoon sun at its own angle, so light lands in torn, warm patches and the faces turned away go violet. The fine marks on every stone are learned from the approved reference itself.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-stone-before-after.png" alt="The same two walls before and after: neat masonry blocks on the left, broken natural rock on the right" loading="lazy"></figure>
+<p><em>Left, the stone from the last post; right, this round. Same place, same light, twice size.</em></p>
+<p>The verdict from the game&#x27;s creator was &quot;so much better&quot;, with one note: the top edges should be rounded. So they now roll over into the face instead of meeting it in a cut line, catching a bright rim where they face the sun and worn unevenly along their length.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-stone-top-edge.png" alt="Two cap stones at the edge of a paved platform, sharp-edged on the left and rounded on the right" loading="lazy"></figure>
+<p><em>The same two cap stones before (left) and after (right), close up at six times size: on the right the edge rolls over with a bright rim of sun. The dark joints between the stones stay, so they still read as separate blocks.</em></p>
+<h2>Golden grass, first round</h2>
+<p>On that stone the lab then grew the ground: calmer earth, leaf litter under the trees, mushrooms, ferns and fallen branches, and grass. Where it grows thick, the grass stands about knee-high to a person, rust at the root and gold at the tips, and it gathers at the foot of walls, along terrace edges and in small meadows.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-golden-grass.png" alt="A meadow of tall golden grass above a low stone wall, with patchy ground around it" loading="lazy"></figure>
+<p><em>Round one of the ground and grass, one pixel to a pixel. You can see what is still wrong: the open ground has a hard, high-contrast mottle like camouflage, and the thick grass looks combed.</em></p>
+<p>That picture is not the finished look. The review said the bare ground should be calm and warm like the reference, and the grass should form rounded tufts with dark hollows, not stand in strands. A second round that does exactly that is waiting for review, and a third is being drawn.</p>
+<h2>Every biome, and the lines between them</h2>
+<p>The direction for these weeks is breadth before polish. You can start anywhere on the map, so no biome gets to be the pretty one while the rest wait. The plan for taking the style everywhere is now written down: the biomes are grouped into nine families by what they are made of (dry grass, green turf, coast, wetland, desert, snow, highland, tropical, and the limestone and basalt country), and built in waves, biggest share of the land first. The first wave is Steppe, Grassland, Beach, Marsh, Desert, Taiga, Alpine, Cloud Forest and Karst: about half of all the land.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-references.png" alt="Twelve painted reference scenes: snowy ruins, a desert oasis, red canyons, a glacier, a rocky shore, a salt marsh, a steppe with standing stones, a jungle path, an alpine lake, a savanna, high plains above a salt lake, and a bamboo forest" loading="lazy"></figure>
+<p><em>Twelve of the 64 reference pictures the game&#x27;s creator made for the style, one per biome or two. These are targets to learn from, not game art.</em></p>
+<p>Those references are now catalogued, so the tools can learn each biome&#x27;s own colours, surfaces and scale from them. Most are measured against the person standing in them, so a tussock or a canyon wall comes out the right size next to you. Four more studies explored biomes the world does not have yet: a monsoon woodland, serpentine barrens, a petrified forest and a kelp forest.</p>
+<p>The other half of breadth is the seams. Today one biome stops and the next begins on a hard, stepped line. The world can now work out, for any spot, how much of each neighbouring biome is there, so you walk <em>through</em> a change of country rather than across it. Each biome gives about a quarter of its own size to the blend on its side: a big forest fades out over a long walk, while a narrow strip of heath keeps a pure middle.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-transitions.png" alt="Two copies of the same piece of map: hard stepped borders between biomes on the left, soft blended borders on the right" loading="lazy"></figure>
+<p><em>The same piece of a forged world, in each biome&#x27;s map colour. Left, today&#x27;s hard edges; right, the blend. Nothing draws it in the game yet: next it gets painted, then each pair of neighbours is tuned, then the ground you walk on follows it too.</em></p>
+<h2>Banners you can learn to read</h2>
+<p>Banners are planned, and a first lab makes them. Every banner belongs to someone: a country, a great house, a city, or an organisation such as a guild, a bandit band or a crime boss&#x27;s crew. Ordinary families never bear arms, though they may wear a lord&#x27;s colours. A banner&#x27;s picture comes from what really happened to its owner in the world&#x27;s history, and its story is read from the same facts, so it reads as history, with no AI writing it while you play.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-banners-scene.png" alt="Four stone pillars on a paved plaza hung with banners: two red ones with a white mill-wheel, a red one with a gold diagonal band, a black one with a white club, and a black flag with a club on a camp pole" loading="lazy"></figure>
+<p><em>Four owners on one plaza: the realm, Thornwick&#x27;s lord, the smiths&#x27; guild and the bandits at the ford, each banner made as well as its owner can afford. A lab picture, not the game.</em></p>
+<p>Knowing whose banner it is becomes something you learn. A stranger sees &quot;a cloth of black, a white club; you don&#x27;t know whose&quot;. A local knows it is the band at the ford: eight people driven out of two villages and one who swore vengeance on the law, feared there. The crime boss&#x27;s crew flies a white purse, because its founder once tried to steal one, and its motto is not its own: &quot;The Purse always collects&quot; is what its victims say. In time a banner should tell you, at a glance, whether a place is safe.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-banners-lore.png" alt="Two sets of arms: the band at the ford, a white club on black, and Colm&#x27;s crew, a white purse on black and russet, each as a cloth on a stone pillar, a shield and a small square banner" loading="lazy"></figure>
+<p><em>The band at the ford (left) and Colm&#x27;s crew (right), each as a cloth on a pillar, a shield and a field banner. In the lab, every line of their history comes from events in the world, and the two stand-ins, the bandits&#x27; camp and the founding of the crew, are marked as such.</em></p>
+<h2>Saves, round two</h2>
+<p>Last time a save kept your character but rebuilt the rest. Now Thornwick&#x27;s people carry on with the lives they had when you left: their jobs, families, grudges and purses. A dungeon you have looted stays looted, a boss you killed stays dead, and if you saved underground you continue underground, where you stood. Items left lying on the ground are still not kept.</p>
+<p>The world you play now lives in its own folder, named for what you chose and not for the version of the game. Before, an update could quietly forge a fresh world and then refuse your save as belonging to another one. And if your world cannot be opened, the game now tells you so instead of silently dropping you onto the old test map. A save that has to be set aside is now always kept under a new name, never written over.</p>
+<p>The longest freeze after the loading card is gone. It came from the travelling merchants planning their routes, and the fix that files every tree and rock by the tile it stands on, which was in review last time, has landed: the routes are now placed in milliseconds.</p>
+<h2>A vow when you are full</h2>
+<figure><img src="../img/blog/docs/site/shots/day13-vow-card.png" alt="The vow card: two vows side by side, Aim I and Bolt, each showing what it costs of the aim and where it makes your rings lean" loading="lazy"></figure>
+<p><em>The vow card in today&#x27;s build, after a season of archery has filled the aim.</em></p>
+<p>A full essence used to just stay full, and your growth stalled. Now, when one fills, a small note appears under the essence readout and a vow is waiting. Press V and the card shows two or three vows that essence offers. Each says what it binds you to, roughly what it costs (shown as a fogged bar and a word, never a number) and which way your next rings will lean. Cards close to how you have been playing are marked &quot;your way&quot;. You can take one or put it off.</p>
+<p>There is a second decision on paper for when you are full: the essence will stay in your body in its own nature, so a fire mage runs hotter and stronger and less stable until it erupts. That is a design, not built yet.</p>
+<h2>Play-testing mode</h2>
+<p>For walking the generated world and judging what the forge makes, there is now a play-testing start: you cannot die, the animals leave you alone (and the thing in the deep stays down), you walk faster, and you can start in any land biome by name. It never touches your real save.</p>
+<h2>Two more plans</h2>
+<p>The player character has a plan: the hero stays built from the same body as everyone else, redrawn in the new style, with separate walk, run and sprint, feet that stop sliding over the ground, and many more animations. Everyone else gets them too, because they share the body.</p>
+<p>So does the underwater. There will be five ways down: turn into a water creature, drink a potion, walk the bottom in diving gear, travel in a magic bubble, or ride a submersible. The good news is that the sea floor is already in the world&#x27;s data. About a sixth of the ocean is sunlit shelf you could walk on, and the plan is to build those places first.</p>
+<h2>What went wrong</h2>
+<p>The first ground pass printed that hard camouflage mottle, and the grass read as combed hair. It took a second round, and a third is running. That ground pass was also merged before its art review had finished, so its fixes had to come as a new piece of work rather than a correction to the old one. The main line of work failed its checks for a while because a small file the engine needs to match a script to its identity had never been committed. And some long pieces of work stalled part-way and had to be restarted.</p>
+<h2>Next</h2>
+<p>The great trees: the monsoon woodland&#x27;s giants first, built by a tree maker every biome can use, to replace the round placeholder trees. The hero redrawn in the new style. The sea floor drawn from the world&#x27;s real depths, and a first underwater still. Then the shared structure all the biomes will build on, and the first wave two biomes at a time, with the blends between them.</p>
+<figure><img src="../img/blog/docs/site/shots/day13-monsoon-study.png" alt="A monsoon woodland: huge gnarled trees with flared, buttressed roots over red clay, a muddy stream winding through" loading="lazy"></figure>
+<p><em>The monsoon woodland study. These giant trees are what the tree maker builds first.</em></p>
+<p>And six more references are arriving now, for the six biomes that had none: the Ashlands, the Salt Flats, the Volcanic country, the Blackwater, the Glasslands, and a sixth the game&#x27;s creator was not sure what to call, so it arrived as the &quot;steam flats&quot;. It is the Geyserfield: pale terraces of mineral crust, blue hot pools ringed in rust-orange, and a geyser cone throwing steam.</p>
+<p>End of day 13: stone that looks like rock, a world that will blend, banners with a past, and a save that keeps the village.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 4 October 2026</span>
+</div></footer>
+</body>
+</html>
