@@ -85,7 +85,7 @@ a.pillar:hover { border-color: var(--brass-deep); }
 </div></nav>
 
 <header class="hero">
-  <img id="heroImg" alt="A hamlet in Sprawl at dusk: stone cottages, lanterns and autumn woods">
+  <img id="heroImg" alt="The autumn woods in Sprawl's Sculpted Pixels style: scarlet and gold trees and dark spruces on stone terraces, a cloaked traveller among them">
   <div class="in">
     <div class="eyebrow">An isometric open-world magic RPG · in development</div>
     <h1>Sprawl</h1>
@@ -96,9 +96,9 @@ a.pillar:hover { border-color: var(--brass-deep); }
 
 <div class="wrap">
   <section id="latest">
-    <div class="sec-head"><h2>Beyond the hamlet, through the rain</h2><span class="eyebrow">28 September 2026</span></div>
-    <p class="lede">Woodland pools, inland seas and weather. More room to see, smoother movement and casting, and a bag that keeps your rewards recoverable. Catch up on the weekend's changes and the next stretch of the world.</p>
-    <a class="btn main" href="blog/2026-09-28-beyond-the-hamlet.html">Read the latest dev blog</a>
+    <div class="sec-head"><h2>A beach, a wurm and a peace with Fenrir</h2><span class="eyebrow">10 October 2026</span></div>
+    <p class="lede">The sixth land arrived: a beach of pale dunes running down through wet sand and foam into turquoise shallows. A cat-headed Tatzelwurm guards high stony ground, Fenrir can be calmed instead of killed, and you no longer vanish behind cliffs and walls.</p>
+    <a class="btn main" href="blog/2026-10-10-day-19-a-beach-a-wurm-and-a-peace-with-fenrir.html">Read the latest dev blog</a>
   </section>
 
   <section id="idea">
@@ -128,7 +128,7 @@ a.pillar:hover { border-color: var(--brass-deep); }
   </section>
 
   <section id="gallery">
-    <div class="sec-head"><h2>From the game</h2><span class="eyebrow">recorded gameplay captures</span></div>
+    <div class="sec-head"><h2>From the game</h2><span class="eyebrow">the Sculpted Pixels art, in the game</span></div>
     <div class="gallery" id="gal"></div>
   </section>
 
@@ -136,9 +136,9 @@ a.pillar:hover { border-color: var(--brass-deep); }
     <div class="status">
       <div>
         <div class="sec-head"><h2>Where it stands</h2></div>
-        <p>Sprawl is early. Normal play now begins in the forged world's starting region, with click/tap movement, pointer aiming on desktop, held casting and a wider camera with wheel/pinch zoom. Explore woodland pools, wetlands, deltas and inland seas through rain, fog, wind and storms. Fish, meet waterfowl, tame a fox and answer the village's notices.</p>
-        <p>The playable region is still bounded. Seamless continent travel is unfinished; swimming, boats, merchants and the deep-ocean ambush are in review. Broader follower systems and multiplayer have core foundations but are not fully playable.</p>
-        <p><a href="journey.html">Read how it's being built</a> by one designer working with AI coding tools. Desktop and Android are supported; these latest changes still need hands-on device checks.</p>
+        <p>Sprawl is early. Normal play starts in the forged world's starting region: click or tap to move, aim and cast while walking, and zoom out to see more of the country. Weather moves through woodland pools, wetlands, deltas and inland seas; villagers, wildlife, merchants and the parish board give you reasons to stay. You can swim, and paddle a boat into open water, where something in the deep may take an interest in your hull.</p>
+        <p>Saving keeps your character and the village: a looted dungeon stays looted and a killed boss stays dead. The new Sculpted Pixels art draws a streamed world with six lands built from reference paintings (grassland, steppe, taiga, marsh, beach and the autumn woods), still behind a switch. Fenrir can be fought or calmed by mending its binding stones, and the Tatzelwurm guards the mountains. Seamless travel across the whole continent and the wider follower and multiplayer systems are still being built.</p>
+        <p><a href="journey.html">Read how it's being built</a> by one designer working with AI coding tools. Desktop comes first for now; the Android build exists, and phone work waits until the art direction is settled.</p>
       </div>
       <div class="tally" id="tally" style="--cols:2"></div>
     </div>
@@ -146,7 +146,7 @@ a.pillar:hover { border-color: var(--brass-deep); }
 </div>
 
 <script>
-const H = {"stats":{"start":"2026-09-22T16:04:58+01:00","last":"2026-10-04T21:56:27+01:00","days":13,"commits":1015,"claude":619,"prs":273,"merged":249,"issues":518,"closed":183,"biomes":48,"creatures":28},"shots":{"hero":"img/shots/hero.png","village":"img/shots/village.png","night":"img/shots/night.png","wolves":"img/shots/wolves.png","magic":"img/shots/magic.png","glade":"img/shots/glade.png","inland-sea":"img/shots/inland-sea.png"}};
+const H = {"stats":{"start":"2026-09-22T16:04:58+01:00","last":"2026-10-10T19:06:42+01:00","days":19,"commits":1365,"claude":870,"prs":422,"merged":337,"issues":727,"closed":234,"biomes":48,"creatures":28},"shots":{"hero":"img/shots/hero.png","village":"img/shots/village.png","night":"img/shots/night.png","wolves":"img/shots/wolves.png","magic":"img/shots/magic.png","autumn-walls":"img/shots/autumn-walls.png","beach":"img/shots/beach.png","rope-bridge":"img/shots/rope-bridge.png","taiga":"img/shots/taiga.png","steppe":"img/shots/steppe.png","meadow":"img/shots/meadow.png","tatzelwurm":"img/shots/tatzelwurm.png"}};
 const $ = id => document.getElementById(id);
 const S = H.stats, fmt = n => n.toLocaleString("en-GB");
 $("heroImg").src = H.shots.hero || H.shots.village;
@@ -176,7 +176,7 @@ drawLattice();
 
 const P = [
   {t: "A world forged from a seed", d: `Continents, climate, rivers and ${S.biomes} biomes grow from one number, and a table of neighbours decides which lands may meet.`, img: "img/world_map.png", href: "world/", go: "The world atlas"},
-  {t: "Creatures with minds", d: "Crows flush in a ripple, deer bolt as a herd, slimes condense wherever an essence runs strong, and a pack you anger sends its matriarch.", img: H.shots.wolves, href: "bestiary.html", go: "The bestiary"},
+  {t: "Creatures with minds", d: "Crows flush in a ripple, deer bolt as a herd, slimes condense wherever an essence runs strong, and a pack you anger sends its matriarch.", img: H.shots.tatzelwurm, href: "bestiary.html", go: "The bestiary"},
   {t: "People from one body", d: "Everyone is the same procedural body shaped by sliders for muscle, fat, height and age, and dressed by what they actually wear.", img: "img/cast.png", contain: true},
   {t: "Quests nobody wrote", d: "The village keeps a ledger of what happened to it. The notices on its board come from real grievances, and deeds answer them."},
   {t: "A fox follows you home", d: "Win a fox over with food and patience. The wider systems for trapping, charms, breeding and necromancy work in the core simulator; they are still awaiting full gameplay integration."},
@@ -187,7 +187,7 @@ $("pillarList").innerHTML = P.map(p => {
   return p.href ? `<a class="pillar" href="${p.href}">${inner}</a>` : `<div class="pillar">${inner}</div>`;
 }).join("");
 
-const G = [["glade", "Sunlight over a woodland mere. Recorded during the glade feature work."], ["inland-sea", "A hamlet on an inland-sea shore. Recorded during the inland-sea feature work."], ["village", "The hamlet by day. The notice board is always in view: the Grey Pack has been at the miller's flock."], ["night", "The same hamlet after dark. Windows and lanterns light up on their own."], ["wolves", "At the wolves' den, a short walk out of the village."], ["magic", "Runes armed in the ground, waiting to go off."]];
+const G = [["autumn-walls", "The autumn woods: scarlet maples, birches and dark spruces on stone terraces."], ["beach", "The beach: dunes and wet sand running down through foam into turquoise shallows."], ["rope-bridge", "A bridge over a lily-padded lake. Bridges and stairs are walked exactly as they are drawn."], ["taiga", "The taiga: snowy spruces and golden larches over lichen, peat and snow."], ["steppe", "The steppe: golden grass, stone walls and red-leaved shrubs."], ["meadow", "The grassland: a flowering meadow, an old oak and a stone edge."]];
 $("gal").innerHTML = G.filter(([k]) => H.shots[k]).map(([k, c]) => `<figure><img src="${H.shots[k]}" alt="${c}" loading="lazy" width="640" height="360"><figcaption>${c}</figcaption></figure>`).join("");
 
 $("tally").innerHTML = [[S.days, "days of work so far"], [fmt(S.commits), "commits"], [S.biomes, "biomes"], [S.creatures, "creatures in game or core"]]
@@ -197,7 +197,7 @@ $("tally").innerHTML = [[S.days, "days of work so far"], [fmt(S.commits), "commi
 
 <footer class="site-foot"><div class="in">
   <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
-  <span>Built 4 October 2026</span>
+  <span>Built 10 October 2026</span>
 </div></footer>
 </body>
 </html>

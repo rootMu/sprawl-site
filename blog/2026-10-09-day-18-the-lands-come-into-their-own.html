@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Day 18: the lands come into their own</title>
+<meta name="description" content="Day 18: the lands come into their own">
+<meta property="og:title" content="Sprawl — Day 18: the lands come into their own">
+<meta property="og:description" content="Day 18: the lands come into their own">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Day 18: the lands come into their own</h1>
+<p><em>9 October 2026 · Day 18</em></p>
+<p class="lede">The new art style left the lab and went into the game, and five lands now have their own look, each built from a painting: a flowering meadow, a dry steppe, a snowy taiga, a reed marsh, and the autumn woods they started from. Borders between lands wander instead of running straight, stairs and bridges are drawn, small trees look like trees, and new land builds faster on less memory. Underneath, wolves, guards and merchants started thinking for themselves, and the first mythic beast, Fenrir, is waiting in its territory.</p>
+<figure><img src="../img/blog/docs/site/shots/day18-taiga-in-game.png" alt="A snowy spruce forest in the game, golden larches among dark blue-green spruces with snow on their branches, the player walking beneath them" loading="lazy"></figure>
+<p><em>In the game: the Taiga. Snow lies on the spruces&#x27; shelves and in drifts on the ground, larches have turned gold, and the trees in front of the player fade so you can see who you are.</em></p>
+<h2>Out of the lab, into the game</h2>
+<p>Last time the Sculpted Pixels style was a set of stills made by a lab tool. Now the game draws it live as you walk: it builds the land in patches around you on spare processor cores and keeps them on disk, so you never see a placeholder. The first view waits on a short loading card instead. The player walks at the scale the ground is drawn at, and bumps into trunks and boulders where they are drawn, not where an old sprite used to stand.</p>
+<p>It is still behind a switch (--sculpted-world) while it grows, but every land in this post was checked in the running game, not only in the lab.</p>
+<h2>Five lands, each from a painting</h2>
+<p>For each land the game&#x27;s creator made a reference painting in ChatGPT, and each land is now built to match its picture: its colours measured from it, and the things in it, flowers, reeds, snow, sagebrush, made one by one by the game&#x27;s own code. Here is each one beside the picture it came from.</p>
+<figure><img src="../img/blog/docs/site/shots/day18-grassland-vs-ref.png" alt="The meadow painting beside the game&#x27;s meadow: yellow-green grass, white and blue flowers, mossy boulders and oaks" loading="lazy"></figure>
+<p><em>Grassland. Left, the reference; right, ours. A carpet of sunlit grass with drifts of white, blue and gold flowers, mossy boulders and broad oaks.</em></p>
+<p>The meadow taught the rule that now holds everywhere: <strong>nothing may look square</strong>, even though the world is built on a grid of tiles. Small rises used to make flat-topped grass boxes with a hard edge. Now they are smooth slopes that bend across the tiles; where a step really is a step, it is rock. Ponds got a muddy, wandering shore, tall reeds, mossy stones half in the water, lily pads, and the far bank mirrored in the surface.</p>
+<figure><img src="../img/blog/docs/site/shots/day18-pond.png" alt="A meadow pond before and after: a plain blue pond on the left, a pond with reeds, stones, lily pads and reflections on the right" loading="lazy"></figure>
+<p><em>A meadow pond before (left) and after (right), close up.</em></p>
+<figure><img src="../img/blog/docs/site/shots/day18-steppe-vs-ref.png" alt="The steppe painting beside the game&#x27;s steppe: red earth, golden grass tufts and silvery sagebrush" loading="lazy"></figure>
+<p><em>Steppe. Open red earth, golden bunchgrass in drifts with bare ground between, sagebrush on dark woody trunks, and knots of stone on the rises. The first try had grass like thin strokes and sage like grey blobs; the creator&#x27;s comparison with the painting sent it back for proper tufts and bushes at the right size.</em></p>
+<figure><img src="../img/blog/docs/site/shots/day18-taiga-vs-ref.png" alt="The taiga painting beside the game&#x27;s taiga: snowy spruces and golden larches over snow and peat" loading="lazy"></figure>
+<p><em>Taiga. Spruces of long drooping sprays with snow on them, golden larches, and a forest floor of lichen, moss, peat and snow drifts that gather in the shade. &quot;The snow and the subtle differences in light and colour really make the references great,&quot; said the review of round one, so round two went after exactly that.</em></p>
+<figure><img src="../img/blog/docs/site/shots/day18-marsh-vs-ref.png" alt="The marsh painting beside the game&#x27;s marsh: dark pools ringed by reeds and cattails in sunlit sedge" loading="lazy"></figure>
+<p><em>Marsh, after three rounds. Dark pools ringed by dense walls of reeds, water that mirrors the reeds and the sky, lily pads in rafts, and sunlit sedge with wet peat between.</em></p>
+<figure><img src="../img/blog/docs/site/shots/day18-marsh-close.png" alt="Close-ups of cattails and lily pads, before, after and in the painting" loading="lazy"></figure>
+<p><em>Round three was all about two things: cattails with fat velvety heads above broad curving leaves, and lily pads with the notch to their centre and the odd white flower.</em></p>
+<h2>Trees, borders, stairs and bridges</h2>
+<p>Every tree is now drawn as its own kind. Meadows grow oaks; the autumn woods grow great crimson oaks and gold birches; the north grows spruces, pines and larches; and when a tree is young, it looks young.</p>
+<figure><img src="../img/blog/docs/site/shots/day18-small-trees.png" alt="Every kind of tree, sapling to full grown, beside a person for scale" loading="lazy"></figure>
+<p><em>Saplings and young trees beside the grown ones: oaks, white-barked birches, alders, a young spruce spire, a young pine with its first whorls, and a wind-bent dwarf pine for the tree line.</em></p>
+<p>Where two lands meet, they used to meet in a straight line, sometimes forty tiles long. Now the meadow gives way to the woods across a wide band that wanders, with islands of one in the other, and the woods&#x27; trees thin out along the same line as their ground.</p>
+<figure><img src="../img/blog/docs/site/shots/day18-borders.png" alt="The edge of the autumn woods before and after: trees stopping at a straight line, then trees following the ground&#x27;s wandering edge" loading="lazy"></figure>
+<p><em>Where the meadow meets the autumn woods. Before, the trees stopped at the old straight line; after, they stand on their own ground, wherever it wanders.</em></p>
+<p>The last two flat placeholders are gone. The creator spotted &quot;a square&quot; by a cliff: it was a staircase the new art did not draw yet. Stairs are now worn stone steps, and bridges are stone decks on piers or planks slung on ropes, all walked at the height they are drawn.</p>
+<figure><img src="../img/blog/docs/site/shots/day18-stairs.png" alt="The same spot before and after: a flat beige square, then stone stairs up the cliff with the player on them" loading="lazy"></figure>
+<p><em>The square, and the stairs it really was.</em></p>
+<figure><img src="../img/blog/docs/site/shots/day18-rope-bridge.png" alt="The player crossing a long rope bridge over a lake with lily pads" loading="lazy"></figure>
+<p><em>A rope bridge, in the game.</em></p>
+<h2>Faster, lighter</h2>
+<p>All this detail costs time to build. Two rounds of work, each checked to leave every pixel exactly as it was, brought it back down: new land bakes three to five times sooner than at the start of the week, then marsh land another 40% and taiga 25% faster on top. The textures each patch of land needs shrank by a third (in the taiga, from about 610 MB to about 400 MB around you), and the frame stays smooth while new land streams in.</p>
+<h2>Meanwhile, elsewhere in the world</h2>
+<ul><li><strong>Minds.</strong> A wolf, the village guards and the travelling merchants now choose what to do with reasons, hold to a choice instead of dithering, and recover when interrupted: a wolf hunts, flees and feeds, a guard takes up a notice and searches, a merchant travels, turns back, opens shop and packs up. These minds are switched on with --minded while they are tested. The village walks proper routes now, going round houses and lamp posts instead of through them.</li><li><strong>The server.</strong> The multiplayer server&#x27;s wolves think with the same minds as the game&#x27;s, the pack&#x27;s quarrels run there, and the animals near players live on the server.</li><li><strong>Fenrir.</strong> The first mythic beast lives in its own territory. Walk in and it warns you; leave and it lets you go; stay and it fights with a charge, a howl and, when hurt, the snapping of its chains. Beat it and you are Fenrir&#x27;s Bane, and a sure enough hand can take its fang and pelt. For now you find it with a switch (--fenrir).</li><li><strong>Saves</strong> keep the things you put down on the ground, and no longer lose a save they cannot fully read.</li><li><strong>The Guild Field Ledger</strong>, an illustrated book of the creatures, with pages that turn.</li></ul>
+<h2>What is next</h2>
+<p>More lands from their paintings: the Beach is being built now, then the desert, the mountains, the karst and the cloud forest. Pinewood&#x27;s pine tufts still stack into flat pads, rope bridges do not sag yet, and up close the marsh&#x27;s reeds still want to arch more, like the painting&#x27;s.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 10 October 2026</span>
+</div></footer>
+</body>
+</html>
