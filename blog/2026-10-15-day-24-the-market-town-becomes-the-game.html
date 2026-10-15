@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Day 24: the market town becomes the game</title>
+<meta name="description" content="Day 24: the market town becomes the game">
+<meta property="og:title" content="Sprawl — Day 24: the market town becomes the game">
+<meta property="og:description" content="Day 24: the market town becomes the game">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Day 24: the market town becomes the game</h1>
+<p><em>15 October 2026 · Day 24</em></p>
+<p class="lede">Sprawl has a new home. You now arrive in a market town drawn in the new style, with an old tree and a well in the square, a church, a rambling inn, and houses with solid walls you can walk inside. The old painted hamlet is gone. Four more lands came true to their paintings, the desert gained sandstorms and dunes you can climb, and the character took the first step towards walking properly.</p>
+<figure><img src="../img/blog/docs/site/shots/day24-town-arrival.png" alt="The market town&#x27;s square in the game: cobbles, the old tree in its walled bed, the well, market stalls with striped awnings, and townsfolk about their day" loading="lazy"></figure>
+<p><em>In the game: where every new game now begins. The square, the well under the old tree, the market, and the town&#x27;s people about their day.</em></p>
+<h2>A town to start in</h2>
+<p>For three weeks the game began in Thornwick, a small hamlet drawn in the old painted autumn art. Meanwhile a market town was taking shape on the side, built entirely from the game&#x27;s own code in the new Sculpted Pixels style: a winding old road with lanes branching off it, plots of different sizes, houses with plaster and timber, a stone church, and an inn that grew wings. This week that town became the game. Start a new game and a loading card says you are arriving at the market town; when it lifts, you are standing in the square in front of the well.</p>
+<p>Getting there took a few things. The town had been an art study you looked at, not a place you played. It has the game&#x27;s controls now, its music and its footsteps on stone and grass, and the well is solid, where before you could walk straight through it. It also had to be fast. The first version ran at two or three frames a second, because it rebuilt its whole picture, some 33,000 pieces, every single frame. Now the town keeps what it has drawn, packs its pieces onto shared pages, and bakes each finished layer into a single picture. Zoomed in, it runs at about 110 frames a second, and stepping through a door no longer freezes the screen for a third of a second.</p>
+<h2>Walls with weight</h2>
+<p>The houses used to be paper: walls drawn as thin lines, with doorways cut in them. Now every wall is a solid slab with real thickness. When you step inside, the roof and the near walls lift away and you see the cut edge of the masonry, like a doll&#x27;s house with its front off. Garden walls are coursed stone with a coping along the top.</p>
+<figure><img src="../img/blog/docs/site/shots/day24-town-walls.png" alt="The town from above, before and after: on the left thin garden walls, on the right coursed stone walls with a coping" loading="lazy"></figure>
+<p><em>Before, and now. Garden walls became proper stone, and every house wall has thickness.</em></p>
+<p>The inn is its own small world: a hall with a gallery around it, a kitchen wing, a smithy at the back, stables, and rooms up under the roof. You can climb both staircases. On the top floor the storeys below now stay standing around you, instead of every side dropping away at once.</p>
+<figure><img src="../img/blog/docs/site/shots/day24-inn-upstairs.png" alt="Two views of the inn&#x27;s top floor: before, every wall gone; now, the floors below still standing" loading="lazy"></figure>
+<p><em>The inn&#x27;s top floor, before and after. The rooms below keep their walls.</em></p>
+<h2>Life in the square</h2>
+<p>Five sparrows, two rats and two cats live around the square. The sparrows peck about and scatter when you or a townsperson comes close. The rats keep to the shelter of walls, stalls and carts and dart across now and then, more often at night. The cats doze and prowl, and give chase when they spot a rat. They are drawn a little larger than life, because at true size they vanished into the cobbles.</p>
+<figure><img src="../img/blog/docs/site/shots/day24-town-cat.png" alt="A cat by a market stall in the square, with townsfolk nearby" loading="lazy"></figure>
+<p><em>Market day. A cat on patrol by the stalls.</em></p>
+<p>The town has its own music now too: an eighty-second piece for harp, strings and glockenspiel called Lanterns in the Square, recorded from real instrument samples. Under it sits a bed of town life, with woodwork, the well, pottery and footsteps, that falls quiet after dark. Magic, which had been drowning out everything else, is a good deal quieter.</p>
+<h2>Goodbye, Thornwick</h2>
+<p>With the town in place, the hamlet went. Thornwick and the painted autumn and summer art it was drawn in are deleted, freeing up a great deal of space. Nothing from it was thrown away without a plan, though. Magic, the bag and character panel, the parish board, merchants, wolves, dungeons, swimming, saving and the mythic creatures all still work in an older test world, drawn with plain placeholder art, and each one is moving into the town in turn.</p>
+<h2>A first step towards walking well</h2>
+<p>The player&#x27;s walk has always looked a little wrong, and this week we found out why. The legs stepped on a fixed timer, about eight frames a second, however fast you were actually moving. So the feet skated over the ground, and the footstep sounds ran on a clock of their own.</p>
+<p>The new walk is led by the feet. Each foot plants and stays put on the ground while the body passes over it, and the cycle moves forward by distance walked, not by time. Stop against a wall and the legs stop too. Cast a spell mid-stride and the arms cast while the legs keep walking. The same walk fits every body, short or tall, slight or heavy, and every outfit from a traveller&#x27;s coat to a long robe to armour.</p>
+<figure><img src="../img/blog/docs/site/shots/day24-walk-before-after.png" alt="The same figure in three outfits, walking: the top row with the old fixed-timer gait, the bottom row with the new foot-led walk" loading="lazy"></figure>
+<p><em>The old walk on top, the new one below, on the same body and gear. This is from the figure lab; the new walk is not in the town yet.</em></p>
+<p>That last line matters. The new walk works in the figure lab but has not yet been fitted to the player in the town. That is the very next job.</p>
+<h2>Four more lands from their paintings</h2>
+<p>Away from the town, four more lands were built to match their reference paintings, so ten of the world&#x27;s lands now have their proper look.</p>
+<figure><img src="../img/blog/docs/site/shots/day24-desert.png" alt="The desert in the game: a great crescent dune with a violet shadowed face, rippled sand, and scrub and rocks on the gravel beyond" loading="lazy"></figure>
+<p><em>The Desert: crescent dunes with violet shadowed faces, sandstone outcrops, scrub and saguaros.</em></p>
+<figure><img src="../img/blog/docs/site/shots/day24-alpine.png" alt="Alpine country in the game: a clear turquoise tarn ringed by granite boulders, with patches of snow, golden grass and red shrubs" loading="lazy"></figure>
+<p><em>The Alpine heights: a clear tarn among granite tors, scree, snow where it would lie, and pines.</em></p>
+<figure><img src="../img/blog/docs/site/shots/day24-karst.png" alt="Karst country in the game: a blue pool sunk into cracked limestone pavement, ferns growing in the cracks, grass beyond" loading="lazy"></figure>
+<p><em>The Karst: limestone pavement split into blocks, ferns in the cracks, and clear pools with stone sides.</em></p>
+<figure><img src="../img/blog/docs/site/shots/day24-cloudforest.png" alt="Cloud forest in the game: broad mossy trees, ferns and red bromeliads beside a river with a small waterfall" loading="lazy"></figure>
+<p><em>The Cloud Forest: domed cloud oaks, lobed moss, ferns, and white water stepping down between shelves.</em></p>
+<p>The Beach also had a third round. The dunes now have ridges with bare dips between them, and the sea holly grows in leafy cushions.</p>
+<h2>The desert comes alive</h2>
+<p>The desert is more than a backdrop now. The dunes are real ground: you climb them, and walk higher as you go. Your feet leave prints, and on a steep face each step sends a small fan of sand sliding downhill that settles a moment later.</p>
+<p>And the wind can rise. In a sandstorm the grains start to lift, the dust thickens until the world is lost in it, and standing out in the open wears you down. Good clothing helps. A building or the lee of a rock bluff keeps you safe entirely.</p>
+<figure><img src="../img/blog/docs/site/shots/day24-sandstorm.png" alt="Four frames of a sandstorm building up in the desert, from clear sky to the view almost lost in dust" loading="lazy"></figure>
+<p><em>A sandstorm building, from clear to full force. Caught in the open, the player&#x27;s health is falling; behind the bluff it would not be.</em></p>
+<h2>Meanwhile, elsewhere in the world</h2>
+<ul><li><strong>People talk.</strong> Townsfolk have speech bubbles and conversations, and introduce themselves. A conversation breaks off if danger comes near, and picks up again once it has passed.</li><li><strong>Fenrir finds its own home.</strong> The great wolf no longer needs a switch to appear. It settles in a suitable cold lair in the starting region, far enough from the village, with all three binding stones in reach so the peaceful ending is always possible.</li><li><strong>Wolves keep their distance.</strong> Ordinary wolves now give people room, rather than treating every passer-by as prey.</li><li><strong>Faster everywhere.</strong> The land builds with far less waste: trees, plants and boulders draw with a third to three quarters less memory churn, and the frame stays within its budget.</li></ul>
+<h2>What is next</h2>
+<p>Next comes the walk: fitting the new foot-led walk to the player in the town, so that starting, stopping, turning and climbing the inn&#x27;s stairs all look right and the footsteps land with the feet. After that the town opens its gates onto the land around it, and the game&#x27;s panels, bag, clock and saving move in, so a day in town can be played and kept.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 15 October 2026</span>
+</div></footer>
+</body>
+</html>

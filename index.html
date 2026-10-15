@@ -96,9 +96,9 @@ a.pillar:hover { border-color: var(--brass-deep); }
 
 <div class="wrap">
   <section id="latest">
-    <div class="sec-head"><h2>A beach, a wurm and a peace with Fenrir</h2><span class="eyebrow">10 October 2026</span></div>
-    <p class="lede">The sixth land arrived: a beach of pale dunes running down through wet sand and foam into turquoise shallows. A cat-headed Tatzelwurm guards high stony ground, Fenrir can be calmed instead of killed, and you no longer vanish behind cliffs and walls.</p>
-    <a class="btn main" href="blog/2026-10-10-day-19-a-beach-a-wurm-and-a-peace-with-fenrir.html">Read the latest dev blog</a>
+    <div class="sec-head"><h2>The market town becomes the game</h2><span class="eyebrow">15 October 2026</span></div>
+    <p class="lede">You now arrive in a market town drawn in the new style: an old tree and a well in the square, a church, a rambling inn, and houses with solid walls you can walk inside. Four more lands came true to their paintings, the desert gained sandstorms and dunes you can climb, and the character took a first step towards walking properly.</p>
+    <a class="btn main" href="blog/2026-10-15-day-24-the-market-town-becomes-the-game.html">Read the latest dev blog</a>
   </section>
 
   <section id="idea">
@@ -136,8 +136,8 @@ a.pillar:hover { border-color: var(--brass-deep); }
     <div class="status">
       <div>
         <div class="sec-head"><h2>Where it stands</h2></div>
-        <p>Sprawl is early. Normal play starts in the forged world's starting region: click or tap to move, aim and cast while walking, and zoom out to see more of the country. Weather moves through woodland pools, wetlands, deltas and inland seas; villagers, wildlife, merchants and the parish board give you reasons to stay. You can swim, and paddle a boat into open water, where something in the deep may take an interest in your hull.</p>
-        <p>Saving keeps your character and the village: a looted dungeon stays looted and a killed boss stays dead. The new Sculpted Pixels art draws a streamed world with six lands built from reference paintings (grassland, steppe, taiga, marsh, beach and the autumn woods), still behind a switch. Fenrir can be fought or calmed by mending its binding stones, and the Tatzelwurm guards the mountains. Seamless travel across the whole continent and the wider follower and multiplayer systems are still being built.</p>
+        <p>Sprawl is early. Every new game now begins in a market town, drawn entirely by the game's own code: you arrive in the square by the well and the old tree, and walk among houses with solid walls you can step inside, a church, and an inn with a gallery, a smithy, stables and rooms under the roof. Townsfolk go about their day and talk to you, sparrows scatter, rats run the gutters and cats hunt them, and the town has its own music.</p>
+        <p>The rest of the game is moving into the town piece by piece: magic, the bag and character panel, merchants, wolves, dungeons, swimming, saving, and the mythic creatures Fenrir and the Tatzelwurm all work in an older test world for now. Ten lands are built from their reference paintings, from meadow and taiga to desert, alpine heights, karst and cloud forest, waiting to be joined to the town's gates. A new walk, where the feet plant on the ground and the stride follows the distance walked, is the next thing to reach the player.</p>
         <p><a href="journey.html">Read how it's being built</a> by one designer working with AI coding tools. Desktop comes first for now; the Android build exists, and phone work waits until the art direction is settled.</p>
       </div>
       <div class="tally" id="tally" style="--cols:2"></div>
@@ -146,7 +146,7 @@ a.pillar:hover { border-color: var(--brass-deep); }
 </div>
 
 <script>
-const H = {"stats":{"start":"2026-09-22T16:04:58+01:00","last":"2026-10-10T19:06:42+01:00","days":19,"commits":1365,"claude":870,"prs":423,"merged":337,"issues":727,"closed":234,"biomes":48,"creatures":28},"shots":{"hero":"img/shots/hero.png?v=30df283a1e","village":"img/shots/village.png?v=03f699865d","night":"img/shots/night.png?v=11b286860e","wolves":"img/shots/wolves.png?v=deedb907cf","magic":"img/shots/magic.png?v=ecd36db055","autumn-walls":"img/shots/autumn-walls.png?v=f40c7967e2","beach":"img/shots/beach.png?v=cefa1f6b69","rope-bridge":"img/shots/rope-bridge.png?v=0e5e600af2","taiga":"img/shots/taiga.png?v=6e4ad8c6c3","steppe":"img/shots/steppe.png?v=446f88a203","meadow":"img/shots/meadow.png?v=20168847ab","tatzelwurm":"img/shots/tatzelwurm.png?v=f2d5d580ae"}};
+const H = {"stats":{"start":"2026-09-22T16:04:58+01:00","last":"2026-10-15T15:30:17+01:00","days":24,"commits":1794,"claude":1032,"prs":471,"merged":392,"issues":770,"closed":254,"biomes":48,"creatures":28},"shots":{"hero":"img/shots/hero.png?v=ecbe834ebe","village":"img/shots/village.png?v=03f699865d","night":"img/shots/night.png?v=11b286860e","wolves":"img/shots/wolves.png?v=deedb907cf","magic":"img/shots/magic.png?v=ecd36db055","town":"img/shots/town.png?v=6be143b333","autumn-walls":"img/shots/autumn-walls.png?v=f40c7967e2","beach":"img/shots/beach.png?v=cefa1f6b69","rope-bridge":"img/shots/rope-bridge.png?v=0e5e600af2","taiga":"img/shots/taiga.png?v=6e4ad8c6c3","steppe":"img/shots/steppe.png?v=446f88a203","meadow":"img/shots/meadow.png?v=20168847ab","tatzelwurm":"img/shots/tatzelwurm.png?v=f2d5d580ae","desert":"img/shots/desert.png?v=484490e0b9","alpine":"img/shots/alpine.png?v=9515244a70","karst":"img/shots/karst.png?v=ffae5c1315","cloudforest":"img/shots/cloudforest.png?v=17098eb798"}};
 const $ = id => document.getElementById(id);
 const S = H.stats, fmt = n => n.toLocaleString("en-GB");
 $("heroImg").src = H.shots.hero || H.shots.village;
@@ -187,7 +187,7 @@ $("pillarList").innerHTML = P.map(p => {
   return p.href ? `<a class="pillar" href="${p.href}">${inner}</a>` : `<div class="pillar">${inner}</div>`;
 }).join("");
 
-const G = [["autumn-walls", "The autumn woods: scarlet maples, birches and dark spruces on stone terraces."], ["beach", "The beach: dunes and wet sand running down through foam into turquoise shallows."], ["rope-bridge", "A bridge over a lily-padded lake. Bridges and stairs are walked exactly as they are drawn."], ["taiga", "The taiga: snowy spruces and golden larches over lichen, peat and snow."], ["steppe", "The steppe: golden grass, stone walls and red-leaved shrubs."], ["meadow", "The grassland: a flowering meadow, an old oak and a stone edge."]];
+const G = [["town", "The market town, where every game begins: stone garden walls, timber houses, the church and the old tree in the square."], ["desert", "The desert: crescent dunes you can climb, sandstone outcrops, scrub and saguaros."], ["alpine", "The alpine heights: a clear tarn among granite tors, scree and snow."], ["karst", "The karst: limestone pavement, ferns in the cracks and clear stone-sided pools."], ["cloudforest", "The cloud forest: domed mossy oaks, ferns and white water between shelves."], ["autumn-walls", "The autumn woods: scarlet maples, birches and dark spruces on stone terraces."], ["beach", "The beach: dunes and wet sand running down through foam into turquoise shallows."], ["rope-bridge", "A bridge over a lily-padded lake. Bridges and stairs are walked exactly as they are drawn."], ["taiga", "The taiga: snowy spruces and golden larches over lichen, peat and snow."], ["steppe", "The steppe: golden grass, stone walls and red-leaved shrubs."], ["meadow", "The grassland: a flowering meadow, an old oak and a stone edge."]];
 $("gal").innerHTML = G.filter(([k]) => H.shots[k]).map(([k, c]) => `<figure><img src="${H.shots[k]}" alt="${c}" loading="lazy" width="640" height="360"><figcaption>${c}</figcaption></figure>`).join("");
 
 $("tally").innerHTML = [[S.days, "days of work so far"], [fmt(S.commits), "commits"], [S.biomes, "biomes"], [S.creatures, "creatures in game or core"]]
@@ -197,7 +197,7 @@ $("tally").innerHTML = [[S.days, "days of work so far"], [fmt(S.commits), "commi
 
 <footer class="site-foot"><div class="in">
   <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
-  <span>Built 10 October 2026</span>
+  <span>Built 15 October 2026</span>
 </div></footer>
 </body>
 </html>
