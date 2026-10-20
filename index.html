@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Sprawl — an isometric open-world magic RPG</title>
-<meta name="description" content="Everyone can handle magic; almost nobody throws fireballs. An isometric open-world RPG forged from a seed.">
-<meta property="og:title" content="Sprawl — an isometric open-world magic RPG">
-<meta property="og:description" content="Everyone can handle magic; almost nobody throws fireballs. An isometric open-world RPG forged from a seed.">
+<title>Sprawl — the Kilnworth method and a world worth exploring</title>
+<meta name="description" content="Discover the Kilnworth method: reference-led composition, procedural rules and playable pixel worlds. The latest Sprawl development stories.">
+<meta property="og:title" content="Sprawl — the Kilnworth method and a world worth exploring">
+<meta property="og:description" content="Discover the Kilnworth method: reference-led composition, procedural rules and playable pixel worlds. The latest Sprawl development stories.">
 <meta name="theme-color" content="#141412">
 <link rel="icon" href="assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,20 +85,39 @@ a.pillar:hover { border-color: var(--brass-deep); }
 </div></nav>
 
 <header class="hero">
-  <img id="heroImg" alt="The autumn woods in Sprawl's Sculpted Pixels style: scarlet and gold trees and dark spruces on stone terraces, a cloaked traveller among them">
+  <img id="heroImg" alt="Sprawl's market town, with timber houses and stone walls around its square">
   <div class="in">
     <div class="eyebrow">An isometric open-world magic RPG · in development</div>
     <h1>Sprawl</h1>
     <p>Everyone can handle magic. Almost nobody throws fireballs.</p>
-    <div class="cta"><a class="btn main" href="world/">Explore the world</a><a class="btn" href="bestiary.html">Meet the creatures</a><a class="btn" href="journey.html">How it's being made</a></div>
+    <div class="cta"><a class="btn main" href="#kilnworth">Discover the Kilnworth method</a><a class="btn" href="world/">Explore the world</a><a class="btn" href="bestiary.html">Meet the creatures</a><a class="btn" href="journey.html">How it's being made</a></div>
   </div>
 </header>
 
 <div class="wrap">
   <section id="latest">
-    <div class="sec-head"><h2>The market town becomes the game</h2><span class="eyebrow">15 October 2026</span></div>
-    <p class="lede">You now arrive in a market town drawn in the new style: an old tree and a well in the square, a church, a rambling inn, and houses with solid walls you can walk inside. Four more lands came true to their paintings, the desert gained sandstorms and dunes you can climb, and the character took a first step towards walking properly.</p>
-    <a class="btn main" href="blog/2026-10-15-day-24-the-market-town-becomes-the-game.html">Read the latest dev blog</a>
+    <div class="sec-head"><h2>A small village. A big change.</h2><span class="eyebrow">20 October 2026 · latest development notes</span></div>
+    <p class="lede">Kilnworth is changing how we build Sprawl. A potters’ village has become the proving ground for turning a reference painting into a generated, playable place—and carrying what we learn into the wider world.</p>
+    <a class="btn main" href="blog/2026-10-20-day-29-kilnworth-method.html">Read the Kilnworth story</a>
+    <a class="btn" href="blog/2026-10-20-day-29-county-roads-and-inns.html">County, roads and inns: the progress update</a>
+  </section>
+
+  <section id="kilnworth" aria-labelledby="kilnworth-title">
+    <div class="sec-head"><h2 id="kilnworth-title">The Kilnworth method</h2><span class="eyebrow">reference → rules → playable place → review</span></div>
+    <p class="lede">Read the place. Build its relationships. Give the whole scene one light. Walk through it. Compare it with the ambition, and repeat.</p>
+    <figure style="margin:24px 0">
+      <img src="img/blog/docs/pr/1280/in-game.jpg" alt="Kilnworth in the game: bottle kilns and tiled sheds around a working pottery yard, with gardens and a stone bridge" width="1280" height="720" loading="lazy" style="display:block;width:100%;height:auto">
+      <figcaption>In-game Kilnworth capture. Rendered from a generated town plan; the wider town and biome rollout remains in development.</figcaption>
+    </figure>
+    <div class="idea">
+      <p class="big">A place should look inviting from a distance, make sense when you arrive, and reward you for walking into it.</p>
+      <div>
+        <p>Start with the yard, kilns, sheds, clay pit and stream—and why they belong together. Turn those relationships into generation rules, then render geometry with shared materials, sunlight, soft shadows and depth.</p>
+        <p>The bridge must be crossable. The shed must be open to work. People must pass behind walls and enter houses. Matched views and close-ups drive the next revision; another seed tests whether the rules hold.</p>
+        <p>This approach is guiding work on other towns and the landscapes between them. Each still has to earn its own visual and gameplay review.</p>
+        <a class="btn main" href="blog/2026-10-20-day-29-kilnworth-method.html">Inside the method</a>
+      </div>
+    </div>
   </section>
 
   <section id="idea">
@@ -137,10 +156,11 @@ a.pillar:hover { border-color: var(--brass-deep); }
       <div>
         <div class="sec-head"><h2>Where it stands</h2></div>
         <p>Sprawl is early. Every new game now begins in a market town, drawn entirely by the game's own code: you arrive in the square by the well and the old tree, and walk among houses with solid walls you can step inside, a church, and an inn with a gallery, a smithy, stables and rooms under the roof. Townsfolk go about their day and talk to you, sparrows scatter, rats run the gutters and cats hunt them, and the town has its own music.</p>
-        <p>The rest of the game is moving into the town piece by piece: magic, the bag and character panel, merchants, wolves, dungeons, swimming, saving, and the mythic creatures Fenrir and the Tatzelwurm all work in an older test world for now. Ten lands are built from their reference paintings, from meadow and taiga to desert, alpine heights, karst and cloud forest, waiting to be joined to the town's gates. A new walk, where the feet plant on the ground and the stride follows the distance walked, is the next thing to reach the player.</p>
+        <p>Recent development centres on the Kilnworth method, more organic settlement layouts, and a county plan connecting eleven towns with a major city across grassland and woodland. The inn preview adds news, stories, music, meals and upstairs rest. Exploration work separates knowledge of the land from the maps drawn from it.</p>
+        <p>These pieces are at different stages. The fitted county plan is not yet a fully connected playable world, the inn systems are being tested in a preview, and the broader town and biome art still needs comparison and refinement. Magic, creatures and other systems continue to move from earlier test worlds into the current game.</p>
         <p><a href="journey.html">Read how it's being built</a> by one designer working with AI coding tools. Desktop comes first for now; the Android build exists, and phone work waits until the art direction is settled.</p>
       </div>
-      <div class="tally" id="tally" style="--cols:2"></div>
+      <div><p class="eyebrow">Project totals at the last full data build</p><div class="tally" id="tally" style="--cols:2"></div></div>
     </div>
   </section>
 </div>
@@ -195,9 +215,10 @@ $("tally").innerHTML = [[S.days, "days of work so far"], [fmt(S.commits), "commi
 </script>
 
 
+
 <footer class="site-foot"><div class="in">
   <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
-  <span>Built 15 October 2026</span>
+  <span>Built 20 October 2026</span>
 </div></footer>
 </body>
 </html>
