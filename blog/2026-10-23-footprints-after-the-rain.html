@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Footprints after the Rain</title>
+<meta name="description" content="Footprints after the Rain">
+<meta property="og:title" content="Sprawl — Footprints after the Rain">
+<meta property="og:description" content="Footprints after the Rain">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Footprints after the Rain</h1>
+<p class="lede">Wet lanes now answer the traveller&#x27;s steps. Footprints after the Rain is implemented in Sprawl&#x27;s playable towns: alternating bootprints, a small splash as a foot lands, and a trail that fades behind you. The feature is ready for visual review.</p>
+<h2>Before: weather needed a traveller</h2>
+<p>The rain and lantern had given the old lanes a new mood. The missing connection was underfoot. A traveller could walk through that weather without leaving any sign of having been there.</p>
+<p>The plan was to join the rain to the actual walking animation. Every accepted foot contact would leave a quiet heel and sole on wet outdoor ground. A short scatter of water would mark the landing, then settle. Standing against a wall would leave nothing. Covered rooms would stay dry.</p>
+<h2>During: make the ground answer honestly</h2>
+<p>The walking system already measures the distance the player really travels. That became the source of the marks, so the trail follows footsteps rather than a timer. The feet alternate, including steps that cross dry ground or disappear inside.</p>
+<p>Each print stays where it was made as the camera moves. It shares the live town surface, letting a wall or roof hide it and stopping a footprint appearing on a different floor. The heel and sole are separate small shapes, with a brief splash around a fresh contact. Reduced motion keeps the quiet prints and removes that splash.</p>
+<p>There is room for forty-eight marks. Older ones are replaced, and each print fades away after nine seconds of simulation time. Walking for an hour cannot keep adding memory. The ground itself never needs to be repainted to leave a trail.</p>
+<p>The first walkthrough also needed work. It carried the traveller past the comparison camera, and an indoor click was too short to prove a step. The final review uses actual walking keys, a real doorway and supported movement inside. The comparison freezes the same traveller and scene, switching only the footprint layer off and on.</p>
+<figure><img src="../img/blog/docs/pr/1396/footprints-before-after.jpg" alt="Native Godot comparison of the same lane with the footfall layer disabled and enabled" loading="lazy"></figure>
+<h2>After: a small trace, properly checked</h2>
+<p>The final native walkthrough passes. Wet walking leaves marks; standing still, dry ground and covered indoor movement do not. The effect follows a replacement view when the camera zooms, and native surface tests reject roofs, walls, missing scenery and the wrong ground height.</p>
+<p>The matched pictures change only in the footprint strip. There are no changes to the traveller or town between them. A separate engine check confirms that reduced motion removes splash geometry while retaining the soles.</p>
+<p>The full forty-eight-mark drawing test took about a third of a millisecond to submit on the software renderer used for this review. That is a bounded fixture measurement, not a promise about every graphics card. The broad test suite also reached missing art fixtures in the prepared checkout, so this feature does not carry a claim that every test in the game passed.</p>
+<p>This is the playable town&#x27;s wet-footfall feature. County weather, animal tracks, lasting footprints and deforming mud are still separate work. For now, the reward is close to the player: walk out after the rain, look behind you, and the road remembers for a little while.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 23 October 2026</span>
+</div></footer>
+</body>
+</html>
