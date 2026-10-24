@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Room for a living town</title>
+<meta name="description" content="Room for a living town">
+<meta property="og:title" content="Sprawl — Room for a living town">
+<meta property="og:description" content="Room for a living town">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Room for a living town</h1>
+<p><em>24 October 2026 · Day 33</em></p>
+<p class="lede">Bigger towns need room for more people, shops and stories. This update removes a repeated cost underneath walking and route finding: a small step now checks nearby walls and furniture, with the same movement rules as before.</p>
+<h2>A footstep was asking the whole town</h2>
+<p>Imagine walking past the inn. The wall beside your shoulder matters. A bed inside a house at the other end of the settlement does not need a detailed collision test for that step.</p>
+<p>Sprawl&#x27;s flat-town collision system was checking both. Every enquiry scanned the town&#x27;s complete collection of building walls, furniture and boundary walls. A route search asks whether thousands of little steps are possible. Preparing the ground that villagers can walk on asks thousands more questions. Each question repeated much of the same unnecessary work.</p>
+<p>That cost becomes more painful as a place grows. Adding a distant house could make a local movement check more expensive even when the traveller never approached it.</p>
+<h2>Keeping the rules, finding less to check</h2>
+<p>The town now builds a small hierarchy of bounds around its solid geometry. A movement enquiry can skip whole groups of distant objects and reach the nearby candidates quickly. The existing collision calculations still decide whether those candidates actually block the traveller.</p>
+<p>Long steps examine the space swept by the whole movement. Diagonal boundary walls retain their rounded ends. Wide bodies still need their full clearance. Reaching a corner still produces the same slide along the wall, including the awkward case where two walls are touched at exactly the same moment.</p>
+<p>The hierarchy belongs to its town plan. Loading or rebuilding a plan creates the matching hierarchy; nothing extra is written into the saved geometry. Tiny collections keep a simple scan. Queries borrow no shared search buffers and allocate no temporary managed storage.</p>
+<h2>What the measurements show</h2>
+<p>The comparison uses the original collision calculations and the new implementation on identical generated town geometry, repeated across five fresh processes. One town uses the development seed; another uses a different seed to check the result across layouts.</p>
+<figure><img src="../img/blog/docs/pr/1427/collision-performance.png" alt="Headless CPU measurements for four route searches and NPC walkable-grid preparation, showing the original scan and the spatial index across five processes" loading="lazy"></figure>
+<p>In the first town, a batch of four plan route searches fell from <strong>124.8 milliseconds to 5.3 milliseconds</strong>. Preparing the villagers&#x27; walkable grid fell from <strong>198.3 milliseconds to 11.6 milliseconds</strong>. The second town showed the same direction of improvement: <strong>148.4 to 7.5 milliseconds</strong> for the searches, and <strong>175.4 to 12.4 milliseconds</strong> for the grid.</p>
+<p>These are measurements of specific Core CPU workloads. A complete player click also passes through the game&#x27;s inn, terrain, input and presentation systems. Frame rate and complete loading time need their own measurements. The raw results retain the slow samples as well as the medians.</p>
+<p>The index for the first town retains about five kilobytes of node data. Its measured construction took roughly three hundredths of a millisecond. The much larger stress fixture is explicitly synthetic; it checks how the mechanism scales without pretending that a laboratory arrangement is a finished city.</p>
+<h2>The same streets, with room to grow</h2>
+<p>The old collision implementation remains a reference for the tests. Generated settlements, narrow doors, furnishings, slanted boundaries, long movements and simultaneous corner hits are compared against it. Saved plans are checked for identical contents, and concurrent readers are checked for identical movement results.</p>
+<p>This lays useful groundwork for a busier world. Villagers can prepare their routes with less repeated geometry work, and the same collision service underneath player movement has less to examine. The next navigation improvements can build on that shared foundation while the existing walls keep doing their job.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 24 October 2026</span>
+</div></footer>
+</body>
+</html>
