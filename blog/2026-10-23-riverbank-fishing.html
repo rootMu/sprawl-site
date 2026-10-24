@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — A line in the water</title>
+<meta name="description" content="A line in the water">
+<meta property="og:title" content="Sprawl — A line in the water">
+<meta property="og:description" content="A line in the water">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>A line in the water</h1>
+<p><em>23 October 2026 · Day 32</em></p>
+<p class="lede">Fishing has reached Sprawl’s playable town water. Cast from a safe bank, wait through the nibble, strike on the bite, and choose whether to keep the catch. A saved creel and personal journal give that quiet moment something lasting.</p>
+<figure><img src="../img/blog/docs/pr/1402/line-and-float.jpg" alt="A traveller fishing Kilnworth’s actual stream, with a rod, line and float over the water" loading="lazy"></figure>
+<h2>A reason to stop by the river</h2>
+<p>The towns have gained warmth, rain and signs of life above their roofs. The next question was what a traveller could actually do on reaching one. A river should offer more than a pleasant route past the houses. It should be somewhere to spend a little time, learn its habits and come away with a story.</p>
+<p>Fishing now provides that pause. The first rod is provided, so there is no shopping errand before trying the activity. At a surveyed bank, cast with F or the Cast button. The float arcs out, settles on the water and starts to move. A nibble asks for patience. The hard dunk brings a clear BITE prompt and a brief chance to strike. Hook it in time and the line brings the fish to the bank.</p>
+<p>You can keep the catch or release it immediately. Walking away reels the line in; a missed bite leaves the fish in its water. Escape brings in an active line without leaving the game. The controls should make a small activity easy to enter and easy to put down.</p>
+<h2>Starting from the actual water</h2>
+<p>Fishing existed in the older test world, but that did not make it an activity in the current game. Its water was represented differently. Moving the old controls across without checking the banks could have left a line cast through a house, from the wrong floor, or into a mill race.</p>
+<p>This implementation starts with the town’s own stream and pond shapes. A bank needs dry ground the traveller can stand on, a float position inside the water, and a clear cast between them. A landing on another floor is not a bank simply because it looks close on screen. Waterfalls, working mill channels and bridges are excluded from this first pass.</p>
+<p>The rod, line and float are drawn in the town, using its depth picture to fit them among the scenery. The native review takes place beside the existing stream in expanded Kilnworth. It uses the real game scene and controls, with the traveller placed at a surveyed bank for the test.</p>
+<h2>A fish keeps its identity</h2>
+<p>The catch is a particular fish from a particular stretch of water. Its species is part of its identity; a larger perch does not turn into a trout. Existing fish rules provide the species and relative size, while the new activity gives them a finite stock and a place in the player’s journal.</p>
+<p>Each stretch holds twelve fish. Keeping a catch removes that fish from its stock. Returning a kept fish requires going back to its home water, and restores that same fish. There is no automatic refill behind the next cast. The creel holds twelve catches, and a full creel leaves the newly landed fish available to release.</p>
+<p>The journal remembers the species landed, the number released and the largest catch on the game’s relative size scale. Those numbers describe the fish artwork’s scale; they are not kilograms. The creel, records and depleted stocks save together for each town and world seed, separate from the work on learned magic abilities.</p>
+<figure><img src="../img/blog/docs/pr/1402/catch-journal.jpg" alt="The catch journal records a named catch, its creel space and personal records" loading="lazy"></figure>
+<h2>What changed during review</h2>
+<p>The first native pass completed the activity with a named Grayling: cast, nibble, bite, strike, land, keep, reload and release. It also checked the less rewarding moments. A missed bite must not produce a catch. Cancelling must not consume stock. Loading a landed fish must not count it twice.</p>
+<p>Getting through that loop exposed presentation work. The actions needed to read as buttons, and the journal needed a more deliberate shape than a panel stretched across the whole view. The follow-up pass gives the controls clearer surfaces and centres the journal in a scrollable panel that can fit a compact window.</p>
+<p>Opening the journal or deciding what to do with a catch also needs to stop movement cleanly. Holding a walking key while closing a panel should not send the traveller stepping toward the river. The input now waits for those held movement keys to be released before walking resumes.</p>
+<h2>A finished activity, with room around it</h2>
+<p>This feature is ready for review as a complete fishing loop in towns with supported stream or pond plans and valid banks. Expanded Kilnworth is the town used for native acceptance. The default market can open the journal, but its differently represented outskirts water does not yet provide fishing banks.</p>
+<p>The current fish stock is a small saved population model. It does not yet mean every specimen can be watched swimming through the river. There is no fish trader, cooking system or automatic restocking in this work. Those would give a catch further uses; the activity already has its own beginning, outcome and memory.</p>
+<p>For now, the stream offers a reason to stop. A float settles, a nibble passes, and the journal has room for one more name.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 24 October 2026</span>
+</div></footer>
+</body>
+</html>
