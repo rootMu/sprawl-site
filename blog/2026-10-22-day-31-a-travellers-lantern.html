@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Day 31: a traveller’s lantern</title>
+<meta name="description" content="Day 31: a traveller’s lantern">
+<meta property="og:title" content="Sprawl — Day 31: a traveller’s lantern">
+<meta property="og:description" content="Day 31: a traveller’s lantern">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Day 31: a traveller’s lantern</h1>
+<p class="lede">A traveller’s lantern is working in Sprawl’s playable traced towns and countryside. Its warm light follows you down the road, reaches nearby surfaces and stays with you when a house opens to reveal its rooms. The feature is ready for review.</p>
+<p>22 October 2026</p>
+<figure><img src="../img/blog/docs/pr/1385/town-lantern-night.png" alt="The traveller’s lantern lights a stone lane beside the market gardens in an actual night-time Godot capture" loading="lazy"></figure>
+<p>The request was to choose something worth being proud of: one feature you could point to and say, “that is in my game”. We chose the traveller’s lantern, then built it into the playable scenes.</p>
+<p>There is a particular feeling we want from the roads between Sprawl’s settlements. An inn means more when you have travelled through the dark to find it. A lane becomes a place when its stone wall, flowers and old timber emerge from the light you are carrying. The lantern gives the player a small piece of that world to carry with them.</p>
+<p>The picture above comes from the actual game engine. The implementation is on its feature branch awaiting review; it has not yet joined the approved game build.</p>
+<h2>A warm light you take with you</h2>
+<p>The lantern starts equipped. Press <strong>B</strong> to put out its light or bring it back, and <strong>N</strong> to compare the night and day views. Walk away and the light follows your character. Its flame varies gently, while the lantern sways with movement.</p>
+<p>The warm colour reaches the traveller as well as the ground nearby. It leaves the wider landscape in its night-time colours, so there is still a road ahead to discover.</p>
+<p>Inside a traced house, the same lantern works with the room cutaway. The walls and roof that have opened for the player also change the scene the light uses. This keeps the illumination connected to the room you are actually standing in.</p>
+<h2>The scenery has depth behind its painted view</h2>
+<p>Sprawl’s traced towns and countryside retain the distance and height of their visible surfaces. The lantern uses that information to place its warmth in the landscape.</p>
+<p>Two things that look close together in the picture can stand far apart in the world. A roof above the traveller, a wall beside them and a path below their feet need different treatment. The light considers that distance and the direction each surface faces, preserving the scenery’s painted colour beneath its warmth.</p>
+<p>The moving light also works separately from landscape preparation. Walking changes the position of the lamp without asking the whole town or countryside view to be painted again. When a new view arrives, the lantern picks up that view’s depth information.</p>
+<h2>What worked in the game</h2>
+<p>We tested the controls through actual engine input in both the county and a traced town. The checks covered switching the lantern off and on, walking, keeping the lamp attached to the traveller, changing day and night, and installing a different countryside view. The town run also entered a real room and checked the new cutaway.</p>
+<p>Both runs passed their focused lantern checks. Separate rendering checks confirmed that switching the light off preserves the original image in the tested cases, including the character, and that a wall facing away receives no direct light.</p>
+<p>These captures and checks used Godot with software rendering. They establish that the feature runs in the game and that the tested behavior works. They do not establish its frame rate on a player’s computer or phone.</p>
+<h2>What still needs work</h2>
+<p>This first version belongs to the county and the traced town scenes. The older town drawing paths, including the default Oakwell view, do not yet use it.</p>
+<p>The light reads the surfaces visible in the scene. It does not have a complete account of hidden walls and objects from which to cast physically complete shadows. The lantern also needs a more deliberate carrying pose, with the hand properly following its handle.</p>
+<p>Those are clear next steps. What we have now is a working piece of the journey: a traveller, a dark road, and a warm light that goes with them.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 24 October 2026</span>
+</div></footer>
+</body>
+</html>
