@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Familiar roads</title>
+<meta name="description" content="Familiar roads">
+<meta property="og:title" content="Sprawl — Familiar roads">
+<meta property="og:description" content="Familiar roads">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Familiar roads</h1>
+<p>A smith walks from home to the forge. A neighbour heads for the market, then makes the same journey tomorrow. Town life is full of familiar routes, and finding each of them from scratch is work the town need not keep repeating.</p>
+<p>The latest change gives the town router a small shared memory. Once it has found a way around buildings, another request between the same patches of ground can reuse that search. Townsfolk already share the router, so the memory belongs to the neighbourhood rather than to one person.</p>
+<h2>Remember the way, keep the destination</h2>
+<p>A remembered route is a corridor through the ground, not somebody else&#x27;s finished walk. Each request still uses its own exact starting position and destination. The existing smoothing runs again, preserving the way corners, doorways and the final approach are handled.</p>
+<p>Two neighbours on different sides of the same patch still need their own approaches. Sharing the search should not send either one to the other&#x27;s doorstep. Straightforward walks across open ground keep their quick path, and separate areas still fail their connectivity check without searching.</p>
+<p>The memory keeps at most sixteen recently used corridors, each no longer than 1,024 cells. Its stored cell payload cannot exceed 64 KiB, and storage is created only when needed. Older entries make room for new ones. Each router owns the memory for its unchanged map; a freshly built router begins empty.</p>
+<h2>What the measurements show</h2>
+<p>The comparison checks the remembered routes against a frozen copy of the original router and measures complete requests, including smoothing. Across five independent runs, repeated routes through two generated towns took roughly 0.31 and 0.34 milliseconds instead of 1.03 milliseconds: about three times faster for those requests.</p>
+<p>There is a trade-off. A workload cycling through twenty-four routes, more than the memory can hold, measured about three per cent slower. Open-ground and disconnected requests remained essentially unchanged. The checks also exercise eviction and the size limits.</p>
+<figure><img src="../img/blog/docs/pr/1454/route-memory.png" alt="Measured production-router comparisons outside the game engine" loading="lazy"></figure>
+<p>These are routing measurements outside the game engine. They do not establish a frame-rate improvement or the proportion of real villagers whose routes will be reused. The benefit in a live town depends on how often its people ask for familiar journeys; that actual play pattern still needs measuring.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 25 October 2026</span>
+</div></footer>
+</body>
+</html>
