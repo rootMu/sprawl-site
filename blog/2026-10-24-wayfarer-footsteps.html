@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Lighter footsteps in the Wayfarer</title>
+<meta name="description" content="Lighter footsteps in the Wayfarer">
+<meta property="og:title" content="Sprawl — Lighter footsteps in the Wayfarer">
+<meta property="og:description" content="Lighter footsteps in the Wayfarer">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Lighter footsteps in the Wayfarer</h1>
+<p><em>24 October 2026 · Day 33</em></p>
+<p class="lede">A walk through the Wayfarer Inn asks thousands of small questions about walls, furniture, floors and stairs. This update makes those questions cheaper, giving Sprawl more room for a busy, inhabited world.</p>
+<h2>The hidden work beneath a step</h2>
+<p>The inn has an occupied hall, a mezzanine gallery and rooms beneath the roof. Your feet need to stay clear of furniture and walls, the gallery needs to keep you away from its open centre, and a stair must carry you continuously between the right landings.</p>
+<p>Movement checks that geometry in small increments. Click-to-walk repeats the same checks while searching for a route. The previous implementation created temporary objects for its wall filters, floor enquiries and upper-floor footprint on each enquiry. A tiny allocation became a large pile when a search tried thousands of possible steps.</p>
+<p>Those temporary objects eventually need collecting. Removing them gives the runtime less housekeeping to do alongside the rest of the game.</p>
+<h2>Following the existing floors</h2>
+<p>The movement code now reads directly through the inn&#x27;s geometry. It checks footprint corners in their original order and keeps the same collision distances, small sweep steps and wall sliding. Stair identity, progress and landing transitions follow the original rules.</p>
+<p>A frozen copy of the previous movement code acts as a reference. Tests compare positions and heights exactly, including awkward boundary cases, long movements and both directions on the stairs. They also check different generated inns and independent readers using the same plan.</p>
+<figure><img src="../img/blog/docs/pr/1436/native-mezzanine.png" alt="The native game after a continuous climb to the occupied mezzanine; this is traversal evidence rather than a timing measurement" loading="lazy"></figure>
+<h2>What changed in the measurements</h2>
+<p>Five fresh processes compared the implementations on three generated inns, alternating their order and retaining every sample. Each result had to agree before a timing could be accepted.</p>
+<figure><img src="../img/blog/docs/pr/1436/inn-performance.png" alt="Headless Core measurements of short movement batches and gallery route searches, with allocation totals and timing ranges" loading="lazy"></figure>
+<p>For the development inn, a batch of 512 short movements fell from <strong>93.8 to 65.2 milliseconds</strong>. A gallery route search fell from <strong>244.0 to 181.5 milliseconds</strong>. The other two seeds showed the same direction of improvement.</p>
+<p>The larger change is the temporary storage: that movement batch fell from <strong>3.43 megabytes to zero managed allocation</strong>. The gallery search fell from <strong>8.88 megabytes to 66 kilobytes</strong>, a reduction of more than <strong>99 percent</strong>. Its search buffers and returned path still take space.</p>
+<p>These are specific headless Core workloads. A complete player click also passes through input, the town&#x27;s other collision layers and presentation. Frame rate, mobile performance and complete input latency need separate measurements. The graph keeps the variation between runs visible.</p>
+<h2>More room for the next traveller</h2>
+<p>This is a foundation for the inn&#x27;s daily life: walking, following a route and climbing between its occupied floors can ask the same questions with less repeated CPU work and temporary storage. The reference tests stay in the project, so future changes can be checked against the movement that already works.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 25 October 2026</span>
+</div></footer>
+</body>
+</html>
