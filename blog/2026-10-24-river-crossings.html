@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — The river is a route</title>
+<meta name="description" content="The river is a route">
+<meta property="og:title" content="Sprawl — The river is a route">
+<meta property="og:description" content="The river is a route">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>The river is a route</h1>
+<p><em>24 October 2026</em></p>
+<p class="lede">Stone steps now lead into Sprawl&#x27;s town rivers. Wade through Kilnworth&#x27;s shallows or swim Madderbrook&#x27;s deeper channel, reach the far landing, and climb safely back onto the lane.</p>
+<figure><img src="../img/blog/docs/pr/1417/polish/swimming.png" alt="The equipped traveller swimming through Madderbrook with waterline contact and a trailing wake in the native game" loading="lazy"></figure>
+<h2>A way in, and a way home</h2>
+<p>The first obstacle was the bank. Several town rivers sit well below the street, behind a steep face of earth or masonry. Removing the old water barrier would have let the traveller drop down through that face, then struggle to get back out.</p>
+<p>Madderbrook now has washing steps on both banks, with shallow stone landings beneath the surface. Kilnworth has river steps too, leading into its shallower stream. Those steps belong to the town itself: the same stone you see is the ground your feet follow. The deeper channel remains between Madderbrook&#x27;s landings, so the journey has a clear rhythm: descend, wade, swim, find stone underfoot, climb out.</p>
+<p>The visual pass gives the steps worn individual stones, darker joints and damp lower courses beside the water. A flush stone apron leads in from the lane, and the entrance stays clear of surrounding plants and boulders. That makes the way down easier to read without changing where the traveller can stand.</p>
+<figure><img src="../img/blog/docs/pr/1417/polish/steps.png" alt="Madderbrook&#x27;s washing steps built from individual worn stones, with darker lower courses at the waterline" loading="lazy"></figure>
+<p>The river keeps its boundaries. An unserved high bank still stops you. Mill races and falls remain closed, and a wall beside the water is still a wall. The bridges remain dry routes above the channel. Timber supports also stop a swimmer&#x27;s body; the space beneath stone bridges stays closed in this first version while their underwater openings await a shared physical model.</p>
+<h2>The same traveller, in the water</h2>
+<p>Shallow water slows your walk. Where the bed drops away, the traveller pitches forward into a swimming stroke. The body, clothes and sixteen facing directions come from the existing character system, with a twelve-frame stroke carrying the movement through each direction.</p>
+<p>Getting the waterline right mattered. Cutting a swimming figure across the screen can remove a forward arm while leaving a boot apparently floating behind it. The new cut follows the body&#x27;s actual horizontal water plane instead. Wading has its own visible waterline, with the feet still resting on the submerged stone beneath you.</p>
+<figure><img src="../img/blog/docs/pr/1417/stack-refresh/after.png" alt="The traveller wading through Kilnworth&#x27;s shallow stream beside the clearer stone access" loading="lazy"></figure>
+<p>Broken crests gather around the head and shoulders, and a short curved wake trails behind a moving swimmer. The contact follows the horizontal water surface as the traveller turns; ripples spread from each meeting with the water. Reduced motion removes the animated trails while keeping the journey readable. The lantern is stowed in the water and returns to its previous setting on dry ground. Fishing reels in when you enter, and swimming leaves no trail of bootprints across the river.</p>
+<h2>Finding the crossing</h2>
+<p>The usual controls stay with you. WASD or the arrow keys move through the shallows and across deep water. Clicks and taps can take the traveller between supported water and land, using the same physical boundaries as walking by hand.</p>
+<p>Press <strong>V</strong> for the river guide. It names the surveyed steps and can walk you to a landing from your current position. In towns without surveyed access, it says so. Opening the guide stops movement; closing it waits for a held movement key to be released before handing control back.</p>
+<figure><img src="../img/blog/docs/pr/1417/guide.png" alt="The river guide showing the actual town&#x27;s surveyed steps and walking actions" loading="lazy"></figure>
+<h2>What the first crossing uncovered</h2>
+<p>The native playthrough found a problem that the movement rules alone could not reveal. A tap on deep water could select a hidden patch of base ground beneath the river. That patch was unsuitable for walking, so the traveller simply stayed still. Water picking now rejects those unsupported ground hits before they can steal the destination.</p>
+<p>The larger animation pack exposed a second problem. It could outgrow the ordinary figure cache, be forgotten immediately, then be requested and uploaded again. The cache now makes room for the controlled traveller&#x27;s complete pack within an explicit bound. The native review checks that the retained appearance stays available through the crossing.</p>
+<p>These details are part of finishing the journey: being able to see the stroke, tap the place you mean, and leave the river as reliably as you entered it.</p>
+<p>This is the first surface-travel slice in the town water, with Madderbrook providing the deep crossing and Kilnworth the shallow one. Diving, underwater exploration, current forces and aquatic combat remain ahead. For now, a river can interrupt a walk, offer another route, and leave the traveller standing safely on the far bank.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 25 October 2026</span>
+</div></footer>
+</body>
+</html>
