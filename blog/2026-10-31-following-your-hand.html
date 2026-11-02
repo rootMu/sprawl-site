@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Following your hand</title>
+<meta name="description" content="Following your hand">
+<meta property="og:title" content="Sprawl — Following your hand">
+<meta property="og:description" content="Following your hand">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Following your hand</h1>
+<p><em>31 October 2026</em></p>
+<p class="lede">A quick click chooses a destination. Holding the pointer gives the next step back to your hand.</p>
+<p>Walking around Oakwell has two different needs. Sometimes you want to point across the square and let the character find a way there. Sometimes you want to thread a doorway, follow a wall, or change your mind halfway through a step.</p>
+<p>This pass keeps quick click-to-walk and adds continuous steering from a sustained left press. After a short hold, the character follows the pointer&#x27;s current ground position. Move the pointer and the heading changes. Release and the held walk stops.</p>
+<figure><img src="../img/blog/docs/pr/616-pointer-steering/native/01-held-walk.png" alt="Following a sustained pointer press along Oakwell&#x27;s north road in the native game" loading="lazy"></figure>
+<h2>The walls still get a say</h2>
+<p>Steering asks the existing movement rules for a step. It does not move the character directly to a cursor position. Walls, doorways, stairs and water still decide where that step can go, and the existing collision slide lets a diagonal approach carry you along an obstacle.</p>
+<p>The held walk also avoids asking for a new long route every frame. Choosing a destination remains a route-finding job; guiding the next step is a local movement job. Both end at the same physical rules.</p>
+<figure><img src="../img/blog/docs/pr/616-pointer-steering/native/03-wall-slide.png" alt="The same held movement slides beside Oakwell&#x27;s solid west wall" loading="lazy"></figure>
+<h2>Look where the spell is going</h2>
+<p>Mouse movement can turn the character towards the pointer. A right-click cast uses that direction immediately, so a quick change of aim does not wait for the next movement update. Keyboard walking remains available, and touch keeps its existing controls.</p>
+<p>The fiddly part was deciding when your hand should stop owning the walk. A conversation, a menu or lost application focus cancels a held gesture. That includes the clock&#x27;s small dawn-and-dusk menu. Closing a panel or finishing a wait while the button is still down does not send the character wandering off. You release and press again.</p>
+<p>Opening the clock with the keyboard is a quiet action: its menu takes the key and leaves your aether alone. Waiting begins when you choose a time.</p>
+<p>Clicks on people and interface controls keep their existing purpose. The aim is a movement option that fits the town&#x27;s interactions, rather than another control competing with them.</p>
+<h2>A small loop worth testing properly</h2>
+<p>The native checks exercise a short route click, a held walk, a live reversal, release, keyboard movement, an actual ability panel, focus changes, a pointer-directed cast and sliding beside a wall. Separate simulation checks cover gesture timing and cancellation.</p>
+<p>This work changes control and intent. It does not claim a new animation set or a measured frame-rate improvement. Its success is more immediate: the character should take the step you are asking for, and stop when you let go.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 2 November 2026</span>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Less work between footsteps</title>
+<meta name="description" content="Less work between footsteps">
+<meta property="og:title" content="Sprawl — Less work between footsteps">
+<meta property="og:description" content="Less work between footsteps">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Less work between footsteps</h1>
+<p><em>1 November 2026</em></p>
+<p>A village becomes more demanding as its people find work, return home and thread their way through narrow doors. Making that cheaper should leave their journeys intact.</p>
+<p>This performance pass follows two small costs that happen often.</p>
+<h2>Choose an approach before checking every alternative</h2>
+<p>A worker needs to reach the actual anvil, hearth or serving place. Nearby furniture can leave enough room for their body while putting their feet outside the wider travel grid.</p>
+<p>The router already handles that distinction. It previously swept every nearby approach for both ends of the journey before choosing one. It now considers the same approaches in the same order and checks them as they become useful. The chosen journey still gets its final physical safety check.</p>
+<h2>Stop leaving rubbish at every footfall</h2>
+<p>Walking across terraced ground checks the ground beneath the body and around its rim. Those checks also decide whether a bridge keeps feet dry, a landing enters water, or a stair connects two floors.</p>
+<p>Some of those tiny checks created temporary objects on every stride. Direct loops now apply the same rules without those repeated allocations. The shoreline, stair heights and collision margins stay the same.</p>
+<figure><img src="../img/blog/docs/pr/1321-town-navigation-performance/measured-work.png" alt="Headless movement measurements: fewer collision checks and temporary allocations, with unchanged route results" loading="lazy"></figure>
+<h2>Measure the work, keep the journey</h2>
+<p>The comparison runs the original and revised movement code over identical generated towns, terraced towns and deliberate awkward cases. It checks exact route points and movement results before recording costs.</p>
+<p>Across three generated towns, a batch of 64 journeys needed about half as many physical collision samples. In the four actual terraced-town fixtures, 256 short walks stopped creating roughly 1.8 to 1.9 million temporary managed bytes.</p>
+<p>These are measurements of the movement systems running without the game engine. They establish less repeated work and less temporary memory; they do not establish a new frame rate on a phone. Full moving-town measurements remain the next check.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 2 November 2026</span>
+</div></footer>
+</body>
+</html>

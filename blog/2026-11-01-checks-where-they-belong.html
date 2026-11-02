@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Keeping checks where they belong</title>
+<meta name="description" content="Keeping checks where they belong">
+<meta property="og:title" content="Sprawl — Keeping checks where they belong">
+<meta property="og:description" content="Keeping checks where they belong">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Keeping checks where they belong</h1>
+<p><em>1 November 2026</em></p>
+<p>A village should spend its time on people moving, working and talking. Sometimes a performance improvement comes from finding work that belongs in the workshop instead.</p>
+<p>Each time the town placed its people for drawing, it also checked whether every awake, visible resident was standing legally. That extra check recorded mistakes for our acceptance tests. The walking and routing systems already made their own collision decisions; this second pass did not move anyone or prevent a step.</p>
+<p>The proposal keeps that full audit in every self-test and makes it available as an explicit diagnostic mode. Ordinary play can leave out the extra pass. Conversations, visibility, facing, walking, work and the pictures people paint keep the same paths.</p>
+<figure><img src="../img/blog/docs/pr/1320-folk-audit/measured-placement.png" alt="Headless component measurements: fewer extra collision audits and lower placement CPU time, not gameplay frame rates" loading="lazy"></figure>
+<h2>A useful reduction with a clear limit</h2>
+<p>The comparison runs the real presentation routine with a recording graphics interface and real generated-town collision queries. It checks groups of sixteen, forty and one hundred people across three town plans, alternating the original and proposed code.</p>
+<p>The recorded placement batches took about twenty-two to twenty-nine percent less CPU time. A batch of 256 placements for one hundred people stopped making 25,600 extra diagnostic queries. Both versions allocated no temporary managed memory in those warm batches.</p>
+<p>These are component measurements on a shared desktop server. They are not game frames, a new phone frame rate or a promise that the whole town is that much faster. The normal engine acceptance tests have now passed. These measurements still do not establish a whole-game frame-rate gain.</p>
+<h2>The tests still have their eyes open</h2>
+<p>The test fixture deliberately supplies illegal footing. Every self-test, explicit audit and comparison mode still detects it. A moving and sleeping resident trace also keeps the same presentation states as the original routine.</p>
+<p>The aim is to keep the checks that protect the game, and stop asking ordinary play to run a test-only audit over and over.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 2 November 2026</span>
+</div></footer>
+</body>
+</html>

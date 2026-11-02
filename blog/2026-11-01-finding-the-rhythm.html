@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Finding the rhythm</title>
+<meta name="description" content="Finding the rhythm">
+<meta property="og:title" content="Sprawl — Finding the rhythm">
+<meta property="og:description" content="Finding the rhythm">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Finding the rhythm</h1>
+<p>A quick jab, a step away, another opening. A fight has a rhythm even before a spell enters it. The next town combat pass gives that rhythm a small, visible memory.</p>
+<p>Consecutive landed actions now build a count above the target. The second link shows a brass two, then three, then four. The lettering grows a little brighter and larger as the run continues, with a limit so a long exchange does not cover the fight.</p>
+<figure><img src="../img/blog/docs/pr/247-combo-feedback/rhythm.png" alt="An engineering diagram of the combo feedback rules, rather than a gameplay image." loading="lazy"></figure>
+<h2>An opening is worth keeping</h2>
+<p>The count follows successful actions. A bare-handed jab counts just as a staff strike or a spell does. Catching several small slimes with one action still gives one link: the number is a memory of the fighter&#x27;s rhythm, rather than a tally of bodies caught in a sweep.</p>
+<p>There is a short space to find the next opening. After about a second and a fifth without a landing, the run ends. Taking damage breaks it too. A successful dodge or parry keeps the run alive, so answering a threat can belong to the same exchange as pressing forward.</p>
+<p>Opening a peaceful menu pauses that little clock. So does the brief pause that gives a landed blow its weight. The count belongs to the fight&#x27;s own time.</p>
+<figure><img src="../img/blog/docs/pr/247-combo-feedback/native-combo-two.jpg" alt="Two real keyboard-driven jabs build the brass second link in the town contact fixture. The fixture places the attack lanes." loading="lazy"></figure>
+<h2>First, make the rhythm readable</h2>
+<p>This is a feedback pass. The count does not yet make a blow stronger, and casting does not spend it on a magical finisher. Those are later steps: the town first needs to show clearly what continued a run and what broke it.</p>
+<p>There is something satisfying about seeing a small sequence take shape. It gives the existing punches, weapons and spells a shared thread, while leaving their costs, reach and consequences where they already belong.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 2 November 2026</span>
+</div></footer>
+</body>
+</html>
