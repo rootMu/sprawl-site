@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Someone lives here</title>
+<meta name="description" content="Someone lives here">
+<meta property="og:title" content="Sprawl — Someone lives here">
+<meta property="og:description" content="Someone lives here">
+<meta name="theme-color" content="#141412">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><h1>Someone lives here</h1>
+<p><em>3 November 2026</em></p>
+<p class="lede">One Oakwell household now has a reason to care when you walk through its door, open its chest or break its provisions.</p>
+<p>A house becomes more interesting when the person living there has something to say about your visit. This review build begins with one of Oakwell&#x27;s existing residents and her actual cottage, reached through the same doorway you can already walk through.</p>
+<p>There is a private chest containing three apples and an earthenware pantry pot holding two rolls. Small possessions, but they belong to someone.</p>
+<h2>A chance to leave</h2>
+<p>If a resident notices you entering the private room, you receive a clear warning and time to leave through the door. Leaving ends that immediate warning. No stolen goods or fight appear merely because you crossed a threshold.</p>
+<p>Staying after the warning, or repeatedly returning after being recognised, earns a firmer response. Recognition matters: an anonymous visitor cannot accumulate a secret repeat-offender record in someone&#x27;s mind.</p>
+<figure><img src="../img/blog/docs/pr/702-property-crime/screenshots/warning.jpg" alt="A resident challenges an unwanted visitor in her actual cottage." loading="lazy"></figure>
+<h2>Opening is a choice. Taking is another.</h2>
+<p>The chest first offers inspection. Opening its lid reveals the apples and a separately labelled <strong>Steal</strong> action. Keyboard, mouse and touch all make that choice explicit. Holding down an old inspection click while the lid opens cannot quietly turn its release into theft.</p>
+<p>The pantry pot can be broken. Its shards and provisions stay in the cottage; collecting a roll is another deliberate action. A full satchel leaves the food where it is. Repeated input cannot produce more apples, rolls or broken pots.</p>
+<figure><img src="../img/blog/docs/pr/702-property-crime/screenshots/chest.jpg" alt="An opened chest shows its three apples beside the separately labelled Steal action." loading="lazy"></figure>
+<h2>What the resident knows</h2>
+<p>The owner can object to damage or theft she actually witnesses. Her sight depends on where she is, where she is looking and the walls between you. Being elsewhere in Oakwell does not tell her what happened at home.</p>
+<p>An unnoticed theft can succeed. Later, when she reaches the chest and finds food missing, she can discover the loss without discovering the thief. The player standing nearby does not become guilty by proximity.</p>
+<p>For a witnessed loss, a visible compensation offer transfers real coins from your purse to hers. Paying settles the known loss once. She still remembers the incident, and her conversation reflects whether you have paid. An unidentified loss produces no bill for the player.</p>
+<figure><img src="../img/blog/docs/pr/702-property-crime/screenshots/witnessed-damage.jpg" alt="Witnessed damage prompts the owner to protest and quote compensation for the known loss." loading="lazy"></figure>
+<h2>Coming back preserves the consequence</h2>
+<p>The open lid, broken pottery, remaining food, carried items, warnings and witness memory are saved together. Continuing keeps the same household history. Older characters gain the new household state through a versioned migration while retaining their existing belongings and progress.</p>
+<p>This is the first bounded encounter in a larger property and crime design. Sound propagation and waking sleepers, real locks, a placed sound-suppression rune, physical reports to guards and pursuit remain further stages. The current encounter proves private space, deliberate taking and responses grounded in what a resident can know.</p>
+<p>The recorded checks use controlled resident positions and a fixed clock to make the comparison reproducible in the running town. Human playtesting still needs to establish whether the warning, ownership and consequences are clear without an explanation beside them.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 3 November 2026</span>
+</div></footer>
+</body>
+</html>
