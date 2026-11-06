@@ -3,11 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Sprawl — the Kilnworth method and a world worth exploring</title>
-<meta name="description" content="Discover the Kilnworth method: scanning a reference image to reconstruct its layout, shapes, materials, colours and light as a playable town.">
-<meta property="og:title" content="Sprawl — the Kilnworth method and a world worth exploring">
-<meta property="og:description" content="Discover the Kilnworth method: scanning a reference image to reconstruct its layout, shapes, materials, colours and light as a playable town.">
+<title>Sprawl — an isometric open-world magic RPG</title>
+<meta name="description" content="Everyone can handle magic; almost nobody throws fireballs. An isometric open-world RPG forged from a seed.">
+<meta property="og:title" content="Sprawl — an isometric open-world magic RPG">
+<meta property="og:description" content="Everyone can handle magic; almost nobody throws fireballs. An isometric open-world RPG forged from a seed.">
+<meta property="og:site_name" content="Sprawl">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://rootmu.github.io/sprawl-site/img/shots/hero.png">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#141412">
+<link rel="alternate" type="application/rss+xml" title="Sprawl dev blog" href="blog/feed.xml">
 <link rel="icon" href="assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,11 +68,31 @@ a.pillar:hover { border-color: var(--brass-deep); }
 .gallery img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
 .gallery figcaption { padding: 8px 12px 10px; font-size: 14px; color: var(--text-2); }
 
+.newsgrid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); grid-template-rows: auto auto; gap: 14px; }
+.news { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); background: var(--panel); border: 1px solid var(--line); text-decoration: none; color: inherit; transition: border-color .15s; }
+.news:hover { border-color: var(--brass-deep); }
+.news .pic { background: #0d0d0c; overflow: hidden; }
+.news .pic img { display: block; width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; }
+.news .txt { padding: 12px 14px 14px; }
+.news h3 { font-size: 22px; line-height: 1.15; margin: 4px 0 6px; }
+.news p { margin: 0; color: var(--text-2); font-size: 14.5px; }
+.news.lead { grid-row: span 2; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; }
+.news.lead .pic { aspect-ratio: 16 / 9; }
+.news.lead h3 { font-size: clamp(26px, 3vw, 34px); }
+.news.lead p { font-size: 16.5px; }
+.latest-more { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; }
+
+.oakwell-band { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px 44px; align-items: center; }
+.oakwell-band img { display: block; width: 100%; height: auto; border: 1px solid var(--line); image-rendering: pixelated; }
+.oakwell-band ul { margin: 0 0 16px; padding-left: 18px; color: var(--text-2); }
+.oakwell-band li { margin: 4px 0; }
+
 .status { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: center; }
 .status p { color: var(--text-2); margin: 0 0 10px; }
 
 @media (max-width: 900px) {
-  .idea, .status { grid-template-columns: minmax(0, 1fr); }
+  .idea, .status, .oakwell-band, .newsgrid { grid-template-columns: minmax(0, 1fr); }
+  .news.lead { grid-row: auto; }
   .axes, .readout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pillars { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
@@ -81,7 +106,7 @@ a.pillar:hover { border-color: var(--brass-deep); }
 <body>
 <nav class="site-nav" aria-label="Site"><div class="in">
   <a class="mark" href="index.html">Sprawl<span>.</span></a>
-  <ul><li><a href="index.html" aria-current=page>Home</a></li><li><a href="world/">World</a></li><li><a href="bestiary.html">Bestiary</a></li><li><a href="journey.html">Journey</a></li><li><a href="blog/">Dev blog</a></li></ul>
+  <ul><li><a href="index.html" aria-current=page>Home</a></li><li><a href="oakwell.html">Oakwell</a></li><li><a href="world/">World</a></li><li><a href="bestiary.html">Bestiary</a></li><li><a href="journey.html">Journey</a></li><li><a href="blog/">Dev blog</a></li></ul>
 </div></nav>
 
 <header class="hero">
@@ -90,16 +115,32 @@ a.pillar:hover { border-color: var(--brass-deep); }
     <div class="eyebrow">An isometric open-world magic RPG · in development</div>
     <h1>Sprawl</h1>
     <p>Everyone can handle magic. Almost nobody throws fireballs.</p>
-    <div class="cta"><a class="btn main" href="#kilnworth">Discover the Kilnworth method</a><a class="btn" href="world/">Explore the world</a><a class="btn" href="bestiary.html">Meet the creatures</a><a class="btn" href="journey.html">How it's being made</a></div>
+    <div class="cta"><a class="btn main" href="oakwell.html">A day in Oakwell</a><a class="btn" href="blog/">Read the dev blog</a><a class="btn" href="world/">Explore the world</a><a class="btn" href="bestiary.html">Meet the creatures</a><a class="btn" href="journey.html">How it's being made</a></div>
   </div>
 </header>
 
 <div class="wrap">
   <section id="latest">
-    <div class="sec-head"><h2>A life, written in rings.</h2><span class="eyebrow">30 October 2026 · latest development notes</span></div>
-    <p class="lede">Essence motes follow the things you do. A coloured ring around the health vial shows growth, with earned points, talent choices and remembered first visits in the playable town.</p>
-    <a class="btn main" href="blog/2026-10-30-a-life-written-in-rings.html">Read the rings story</a>
-    <a class="btn" href="blog/">All development stories</a>
+    <div class="sec-head"><h2>Latest from the workshop</h2><span class="eyebrow">the newest dev blog posts</span></div>
+    <div class="newsgrid"><a class="news lead" href="blog/2026-11-06-who-comes-to-oakwell.html"><div class="pic"><img src="img/blog/docs/pr/23-title-and-creator/after-title-first-launch.png" alt="" loading="lazy"></div><div class="txt"><span class="eyebrow">6 November 2026</span><h3>Who comes to Oakwell?</h3><p>Sprawl now opens on a title screen. You can shape the person who arrives, and the game shows you how what you do in Oakwell changes them.</p></div></a><a class="news" href="blog/2026-11-06-through-the-smoke.html"><div class="pic"><img src="img/blog/docs/site/shots/home-old-wood.png" alt="" loading="lazy"></div><div class="txt"><span class="eyebrow">6 November 2026</span><h3>Through the smoke</h3><p>West of Oakwell, the trees now close over the path. In a woodcutters&#x27; clearing, an old stump has gone hollow, and smoke stands in the cleft at its foot.</p></div></a><a class="news" href="blog/2026-11-06-fruit-stone-grain-and-a-mill.html"><div class="pic"><img src="img/blog/docs/site/shots/home-orchard.png" alt="" loading="lazy"></div><div class="txt"><span class="eyebrow">6 November 2026</span><h3>Fruit, stone, grain and a mill</h3><p>Fallen fruit, a quartz seam, a blocked road and a watermill: Oakwell&#x27;s everyday work is starting to answer what the town actually needs.</p></div></a></div>
+    <div class="latest-more"><a class="btn" href="blog/">All development stories</a><a class="btn" href="blog/feed.xml">Follow by RSS</a></div>
+  </section>
+
+  <section id="oakwell" aria-labelledby="oakwell-title">
+    <div class="oakwell-band">
+      <img src="img/shots/stump.png" alt="The hollow stump in Oakwell's old wood, with green smoke in its cleft" width="800" height="410" loading="lazy">
+      <div>
+        <div class="sec-head"><h2 id="oakwell-title">A day in Oakwell</h2></div>
+        <p class="lede">Every game begins in the market town of Oakwell, and for now the town is the game. Make the person who arrives, then spend the day as you like:</p>
+        <ul>
+          <li>gather herbs, brew a draught and read what a seam still holds;</li>
+          <li>take commissions paid from real tills, or clear the road the inn's grain comes by;</li>
+          <li>meet a wolf, a bandit and a guard on the roads, and choose your fights;</li>
+          <li>climb down below the well, or step through the smoke in an old stump.</li>
+        </ul>
+        <a class="btn main" href="oakwell.html">What you can do there today</a>
+      </div>
+    </div>
   </section>
 
   <section id="kilnworth" aria-labelledby="kilnworth-title">
@@ -155,9 +196,9 @@ a.pillar:hover { border-color: var(--brass-deep); }
     <div class="status">
       <div>
         <div class="sec-head"><h2>Where it stands</h2></div>
-        <p>Sprawl is early. Every new game now begins in a market town, drawn entirely by the game's own code: you arrive in the square by the well and the old tree, and walk among houses with solid walls you can step inside, a church, and an inn with a gallery, a smithy, stables and rooms under the roof. Townsfolk go about their day and talk to you, sparrows scatter, rats run the gutters and cats hunt them, and the town has its own music.</p>
-        <p>Recent development centres on the Kilnworth method, more organic settlement layouts, and a county plan connecting eleven towns with a major city across grassland and woodland. The inn preview adds news, stories, music, meals and upstairs rest. Exploration work separates knowledge of the land from the maps drawn from it.</p>
-        <p>These pieces are at different stages. The fitted county plan is not yet a fully connected playable world, the inn systems are being tested in a preview, and the broader town and biome art still needs comparison and refinement. Magic, creatures and other systems continue to move from earlier test worlds into the current game.</p>
+        <p>Sprawl is early, but it is a game you can play. It opens on a title and a character creator, and every life begins in Oakwell, a market town drawn entirely by the game's own code. Its people keep their own hours and own their own things. You can gather and brew, mine and trade, take commissions, fight or avoid what waits on the roads, climb down below the well, and walk through the smoke in an old stump into the first dungeon. Everything you do feeds the rings of your growth, and Continue brings it all back.</p>
+        <p>The first county is permanent: Oakwell, its neighbouring towns and the city of Marlbury keep their places and their core cast from one game to the next, while the countryside and its history vary. The next goal is a whole day in Oakwell that holds up for 30 to 45 minutes of play: a real need, preparation, an outing, danger, and a safe return.</p>
+        <p>These pieces are at different stages. Much of the town has so far been checked by automated play rather than by players, travel out across the county is still being joined up, and the wider biomes' art is still being compared and refined. Magic, creatures and other systems continue to move from the older test world into the town.</p>
         <p><a href="journey.html">Read how it's being built</a> by one designer working with AI coding tools. Desktop comes first for now; the Android build exists, and phone work waits until the art direction is settled.</p>
       </div>
       <div><p class="eyebrow">Project totals at the last full data build</p><div class="tally" id="tally" style="--cols:2"></div></div>
@@ -166,7 +207,7 @@ a.pillar:hover { border-color: var(--brass-deep); }
 </div>
 
 <script>
-const H = {"stats":{"start":"2026-09-22T16:04:58+01:00","last":"2026-10-15T15:30:17+01:00","days":24,"commits":1794,"claude":1032,"prs":471,"merged":392,"issues":770,"closed":254,"biomes":48,"creatures":28},"shots":{"hero":"img/shots/hero.png?v=ecbe834ebe","village":"img/shots/village.png?v=03f699865d","night":"img/shots/night.png?v=11b286860e","wolves":"img/shots/wolves.png?v=deedb907cf","magic":"img/shots/magic.png?v=ecd36db055","town":"img/shots/town.png?v=6be143b333","autumn-walls":"img/shots/autumn-walls.png?v=f40c7967e2","beach":"img/shots/beach.png?v=cefa1f6b69","rope-bridge":"img/shots/rope-bridge.png?v=0e5e600af2","taiga":"img/shots/taiga.png?v=6e4ad8c6c3","steppe":"img/shots/steppe.png?v=446f88a203","meadow":"img/shots/meadow.png?v=20168847ab","tatzelwurm":"img/shots/tatzelwurm.png?v=f2d5d580ae","desert":"img/shots/desert.png?v=484490e0b9","alpine":"img/shots/alpine.png?v=9515244a70","karst":"img/shots/karst.png?v=ffae5c1315","cloudforest":"img/shots/cloudforest.png?v=17098eb798"}};
+const H = {"stats":{"start":"2026-09-22T16:04:58+01:00","last":"2026-11-06T06:58:27+00:00","snapshotAt":"2026-11-06T15:16:35.842220+00:00","days":46,"commits":2729,"claude":1331,"prs":663,"merged":578,"issues":863,"closed":439,"biomes":48,"creatures":39},"shots":{"hero":"img/shots/hero.png?v=ecbe834ebe","village":"img/shots/village.png?v=03f699865d","night":"img/shots/night.png?v=11b286860e","wolves":"img/shots/wolves.png?v=deedb907cf","magic":"img/shots/magic.png?v=ecd36db055","town":"img/shots/town.png?v=6be143b333","autumn-walls":"img/shots/autumn-walls.png?v=f40c7967e2","beach":"img/shots/beach.png?v=cefa1f6b69","rope-bridge":"img/shots/rope-bridge.png?v=0e5e600af2","taiga":"img/shots/taiga.png?v=6e4ad8c6c3","steppe":"img/shots/steppe.png?v=446f88a203","meadow":"img/shots/meadow.png?v=20168847ab","tatzelwurm":"img/shots/tatzelwurm.png?v=f2d5d580ae","old-wood":"img/shots/old-wood.png?v=78b8dee11f","stump":"img/shots/stump.png?v=9a5d018117","root-hollow":"img/shots/root-hollow.png?v=e9dacc76c1","orchard":"img/shots/orchard.png?v=186e7aa3fd","town-night":"img/shots/town-night.png?v=275cdfe78a","desert":"img/shots/desert.png?v=484490e0b9","alpine":"img/shots/alpine.png?v=9515244a70","karst":"img/shots/karst.png?v=ffae5c1315","cloudforest":"img/shots/cloudforest.png?v=17098eb798"}};
 const $ = id => document.getElementById(id);
 const S = H.stats, fmt = n => n.toLocaleString("en-GB");
 $("heroImg").src = H.shots.hero || H.shots.village;
@@ -207,7 +248,7 @@ $("pillarList").innerHTML = P.map(p => {
   return p.href ? `<a class="pillar" href="${p.href}">${inner}</a>` : `<div class="pillar">${inner}</div>`;
 }).join("");
 
-const G = [["town", "The market town, where every game begins: stone garden walls, timber houses, the church and the old tree in the square."], ["desert", "The desert: crescent dunes you can climb, sandstone outcrops, scrub and saguaros."], ["alpine", "The alpine heights: a clear tarn among granite tors, scree and snow."], ["karst", "The karst: limestone pavement, ferns in the cracks and clear stone-sided pools."], ["cloudforest", "The cloud forest: domed mossy oaks, ferns and white water between shelves."], ["autumn-walls", "The autumn woods: scarlet maples, birches and dark spruces on stone terraces."], ["beach", "The beach: dunes and wet sand running down through foam into turquoise shallows."], ["rope-bridge", "A bridge over a lily-padded lake. Bridges and stairs are walked exactly as they are drawn."], ["taiga", "The taiga: snowy spruces and golden larches over lichen, peat and snow."], ["steppe", "The steppe: golden grass, stone walls and red-leaved shrubs."], ["meadow", "The grassland: a flowering meadow, an old oak and a stone edge."]];
+const G = [["old-wood", "The old wood west of Oakwell: twisted oaks close over the path, with light breaking through in pools."], ["stump", "A hollow stump in a woodcutters' clearing. The green smoke in its cleft is the way into a dungeon."], ["root-hollow", "The Teeming Barrow: packed loam, root-bound walls and glowcaps for light."], ["orchard", "Oakwell's orchard, where a windfall apple goes into the satchel."], ["town-night", "Oakwell's square at night, with the market stalls closed until morning."], ["town", "The market town, where every game begins: stone garden walls, timber houses, the church and the old tree in the square."], ["desert", "The desert: crescent dunes you can climb, sandstone outcrops, scrub and saguaros."], ["alpine", "The alpine heights: a clear tarn among granite tors, scree and snow."], ["karst", "The karst: limestone pavement, ferns in the cracks and clear stone-sided pools."], ["cloudforest", "The cloud forest: domed mossy oaks, ferns and white water between shelves."], ["autumn-walls", "The autumn woods: scarlet maples, birches and dark spruces on stone terraces."], ["beach", "The beach: dunes and wet sand running down through foam into turquoise shallows."], ["rope-bridge", "A bridge over a lily-padded lake. Bridges and stairs are walked exactly as they are drawn."], ["taiga", "The taiga: snowy spruces and golden larches over lichen, peat and snow."], ["steppe", "The steppe: golden grass, stone walls and red-leaved shrubs."], ["meadow", "The grassland: a flowering meadow, an old oak and a stone edge."]];
 $("gal").innerHTML = G.filter(([k]) => H.shots[k]).map(([k, c]) => `<figure><img src="${H.shots[k]}" alt="${c}" loading="lazy" width="640" height="360"><figcaption>${c}</figcaption></figure>`).join("");
 
 $("tally").innerHTML = [[S.days, "days of work so far"], [fmt(S.commits), "commits"], [S.biomes, "biomes"], [S.creatures, "creatures in game or core"]]
@@ -216,10 +257,10 @@ $("tally").innerHTML = [[S.days, "days of work so far"], [fmt(S.commits), "commi
 
 
 
+
 <footer class="site-foot"><div class="in">
   <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
-  <span>Built 20 October 2026</span>
+  <span>Built 6 November 2026</span>
 </div></footer>
 </body>
 </html>
-
