@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Who comes to Oakwell?</title>
+<meta name="description" content="Sprawl now opens on a title screen. You can shape the person who arrives, and the game shows you how what you do in Oakwell changes them.">
+<meta property="og:title" content="Sprawl — Who comes to Oakwell?">
+<meta property="og:description" content="Sprawl now opens on a title screen. You can shape the person who arrives, and the game shows you how what you do in Oakwell changes them.">
+<meta property="og:site_name" content="Sprawl">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#141412">
+<link rel="alternate" type="application/rss+xml" title="Sprawl dev blog" href="../blog/feed.xml">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Who comes to Oakwell?">
+<meta name="twitter:description" content="Sprawl now opens on a title screen. You can shape the person who arrives, and the game shows you how what you do in Oakwell changes them.">
+<meta property="og:image" content="https://rootmu.github.io/sprawl-site/img/blog/docs/pr/23-title-and-creator/after-title-first-launch.png">
+<meta name="twitter:image" content="https://rootmu.github.io/sprawl-site/img/blog/docs/pr/23-title-and-creator/after-title-first-launch.png">
+
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../oakwell.html">Oakwell</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><p class="eyebrow">6 November 2026</p><h1>Who comes to Oakwell?</h1>
+<p class="lede">Sprawl now opens on a title screen. You can shape the person who arrives, and the game shows you how what you do in Oakwell changes them.</p>
+<p>Until this week, launching Sprawl dropped you straight into Oakwell&#x27;s square as the same hooded traveller every time. Now the game opens on a title. The square lies dimmed behind it, and there are three choices: Continue, New Game and Quit. Continue names who it will bring back and the day they had reached. With no saved character it is greyed out and says so, and nothing can select it.</p>
+<figure><img src="../img/blog/docs/pr/23-title-and-creator/after-title-first-launch.png" alt="The title screen over the dimmed square: Continue greyed out with no saved character yet, New Game and Quit." loading="lazy"></figure>
+<h2>A body of your own</h2>
+<p>New Game opens the character creator. Everyone in Sprawl is built from the same procedural body, shaped by sliders, so the creator gives you those same sliders: muscle, weight, height, shape and an age from 18 to 70, then skin, hair colour, red in the hair, a hair style and a beard. Six starting outfits are made from clothes already in the game, from the Forester&#x27;s to the Pilgrim&#x27;s, with a choice of head piece and cloak on top. The figure in the middle is drawn by the same renderer as the townsfolk, and you can turn it to see every side. Type a name or ask the dice, then choose Begin in Oakwell.</p>
+<figure><img src="../img/blog/docs/pr/23-title-and-creator/after-creator.png" alt="The character creator: body sliders on the left, the figure in an Adept&#x27;s robe, wool hood and traveller&#x27;s cloak in the middle, clothes and the Begin button on the right." loading="lazy"></figure>
+<p>There is no class to pick. Your trade and your vows come later, from what you actually do in town. Every outfit keeps the traveller&#x27;s oak staff, because the town&#x27;s first fighting style is built on it. The arrival card then names you, and you walk out into the square as the person you made.</p>
+<figure><img src="../img/blog/docs/pr/23-title-and-creator/after-arrival-card.png" alt="The arrival card: Arriving, Oakwell, and the name of the new character." loading="lazy"></figure>
+<p>Oakwell is the same permanent town in every life, so New Game starts a new life in it rather than a new world. If a character already exists, the game asks before going on. Nothing is thrown away: the previous life&#x27;s files are set aside in a folder of their own, with a note explaining how to bring them back.</p>
+<h2>Growth you can read</h2>
+<p>Rings around the health vial arrived a week ago, to show essence gathering as you live. Measured against Oakwell itself, they came too quickly at first and then stalled. Simulated players, run minute by minute without the game engine, were at ring eight within ten minutes and then had little left to earn. Each ring now has a minimum cost. A busy model player who does a bit of everything reaches the first ring in about two minutes and the first talent, at ring five, in about an hour. Walking alone takes around three hours to earn a ring.</p>
+<figure><img src="../img/blog/docs/pr/1108-levelling-and-hud/pacing-before-after.png" alt="A measured chart from the headless simulator, not gameplay: rings by real minute for seven kinds of simulated player, before and after the change." loading="lazy"></figure>
+<p>Those are measurements of simulated players, not people. The first human sessions will show whether the pace feels right. Characters saved before the change keep every ring they had already reached; only the rings beyond them follow the new curve.</p>
+<p>When something you do feeds you, a small caption over your head now names it, such as Trading feeding Bargain, Speak and Coin. Rings of a Life, the character sheet, now also lists what you have grown from lately, the vows you hold and which way they lean your next points, and the work you have taken up.</p>
+<figure><img src="../img/blog/docs/site/shots/oakwell-rings.png" alt="Rings of a Life: points and a talent waiting, the next talent&#x27;s ring, and the acts you have grown from lately." loading="lazy"></figure>
+<h2>Room on the screen</h2>
+<p>The field journal on the right used to sit underneath the roads panel, which covered it and took its clicks. On a desktop screen the two now stack. On a small screen only one shows at a time: the journal during ordinary town life, and the road guide when something dangerous is close.</p>
+<figure><img src="../img/blog/docs/pr/1108-levelling-and-hud/hud-after-1280x720.png" alt="The town HUD at desktop size: the roads panel at the top right, with the field journal stacked cleanly below it." loading="lazy"></figure>
+<p>All of this was checked in the running game with automated keys and clicks, at three screen sizes. Equipment comes next, so that something you pick up in play can be worn, shown on your figure and saved.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 6 November 2026</span>
+</div></footer>
+</body>
+</html>
