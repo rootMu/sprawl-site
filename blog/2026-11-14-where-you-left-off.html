@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — Where you left off</title>
+<meta name="description" content="Continue now tells you what it is continuing: who is waiting on you, what you were last paid for and what you are carrying, in a few lines beside the button.">
+<meta property="og:title" content="Sprawl — Where you left off">
+<meta property="og:description" content="Continue now tells you what it is continuing: who is waiting on you, what you were last paid for and what you are carrying, in a few lines beside the button.">
+<meta property="og:site_name" content="Sprawl">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#141412">
+<link rel="alternate" type="application/rss+xml" title="Sprawl dev blog" href="../blog/feed.xml">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where you left off">
+<meta name="twitter:description" content="Continue now tells you what it is continuing: who is waiting on you, what you were last paid for and what you are carrying, in a few lines beside the button.">
+<meta property="og:image" content="https://rootmu.github.io/sprawl-site/img/blog/docs/pr/23-title-and-creator/after-title-continue.png">
+<meta name="twitter:image" content="https://rootmu.github.io/sprawl-site/img/blog/docs/pr/23-title-and-creator/after-title-continue.png">
+
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../oakwell.html">Oakwell</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><p class="eyebrow">14 November 2026</p><h1>Where you left off</h1>
+<p class="lede">Continue now tells you what it is continuing: who is waiting on you, what you were last paid for and what you are carrying, in a few lines beside the button.</p>
+<p>A first playable demo of Sprawl will not be played in one sitting. Someone will try it for twenty minutes, close it, and come back two days later. The plan for that demo asks for a save you can trust and a player who can tell what to do next. The save has had a great deal of care. The second part had a gap right at the front door.</p>
+<p>This is the title as it stands today. Continue names the character and the day they had reached. It says nothing of what they were in the middle of.</p>
+<figure><img src="../img/blog/docs/pr/23-title-and-creator/after-title-continue.png" alt="The title screen in the running game today: Continue reads Aldith of Marl, day 1, with New Game and Quit below it." loading="lazy"></figure>
+<p>Day 1 could mean you had only just walked into the square. It could also mean you had taken the smith&#x27;s notice, handed over half the ore and were on your way to find the rest. From the title you could not tell which, and after two days away you might not remember either.</p>
+<h2>A few lines beside Continue</h2>
+<p>The title now reads the saved character before loading it and sets out where that life stands, in plain sentences, in a panel beside the menu.</p>
+<figure><img src="../img/blog/docs/pr/1249-where-you-left-off/title-mockup.jpg" alt="A mock-up, labelled as one across its top: the new panel drawn by a script over a capture of the current title. Beside Continue it reads Day 1, afternoon, then that Hamon is waiting at the forge for one more Iron Ore by the end of day 4, that one was delivered and paid for, and what the purse holds." loading="lazy"></figure>
+<p>That picture is a mock-up, and it says so across its top. The panel was drawn by a script over a capture of the present title, using the game&#x27;s own lettering and the measurements in its code. It has not yet been captured in the running game, and the first real capture will replace it.</p>
+<p>The words are not mocked. They are what the game&#x27;s own code produces for a real save: a first day in Oakwell on which the traveller took Hamon&#x27;s notice at the board, brought him one of the two pieces of iron ore he needs, and stopped. The panel says who is still waiting and where, how much is left, and the day the notice runs out. It repeats the last thing the town paid you for, in the same words your journal used. It ends with your purse and your satchel.</p>
+<p>If you already hold what somebody is waiting for, it says so. A line that ends with the words you carry exactly that is the game telling you the errand is nearly done.</p>
+<p>With no work in hand, the panel says that too, and reminds you that notices go up on the board in the square. A new game has nothing to tell, so there is no panel at all.</p>
+<h2>The most pressing thing first</h2>
+<p>The lines always come in the same order. First, anything that holds you: being kept by the guard after an assault, having stopped somewhere below ground such as the mausoleum or the Fernfall Deeps, or being hurt. Then what you owe, which is work you took and have not finished. Then what you learned and what you did. What you carry comes last.</p>
+<p>The title has room for four lines. The first two also appear on the card that stands in front of Oakwell while the town is prepared, beneath the name of whoever is returning. So the reminder is there once when you choose, and again while you wait.</p>
+<h2>What it will not tell you</h2>
+<p>Sprawl tries hard never to tell you something your character has not found out. The reminder keeps to that.</p>
+<ul><li>A notice on the board that you never took is not mentioned, however useful it would be.</li><li>A plant you gathered and have not identified is counted and never named.</li><li>Your field notes are repeated as far as you took them. Reddish grit that nobody has identified stays a guess.</li><li>The next step of an expedition is told only if you chose to keep an itinerary, and then in the itinerary&#x27;s own words.</li><li>What the townsfolk have been thinking or doing while you were away is not told at all.</li></ul>
+<figure><img src="../img/blog/docs/pr/1249-where-you-left-off/what-it-tells.png" alt="A diagram of the rule, not a game screenshot: what is read from the saved character, the order it is told in, the two places it is shown, and the four things that are never told." loading="lazy"></figure>
+<p>That last list matters for testing as much as for play. Part of what the first playtests will ask is whether a player can work out a next step for themselves. A reminder that quietly handed over the answer would spoil the question.</p>
+<h2>Reading without touching</h2>
+<p>Looking is not loading. The reminder reads the saved file and changes nothing in it. It grants nothing, starts nothing and moves no clock. If one part of the file cannot be read, that part is left out and the rest is still told. If the file cannot be read at all, there is no panel, and Continue behaves exactly as it did before.</p>
+<p>Names in the file are treated with suspicion. Each is cut to a sensible length and kept to one line before it reaches the screen.</p>
+<h2>How far this has been checked</h2>
+<p>The reading itself is well tested without the game engine. It was run against saves written by the game&#x27;s own town: the smith&#x27;s real first-day order, taken and part delivered, and a hunt taken up after a wolf harmed a real flock. It was also run against two character files that the running game saved during earlier work, one of them stopped inside the mausoleum.</p>
+<p>The part you see has not been run yet. The panel and the card lines are written and carry their own checks for the automated title run, but that run needs the game engine, which was not available where this was made. Until it passes and a real capture is taken, treat the picture above as a drawing of the intent.</p>
+<p>After that, the useful test is a human one: close the game in the middle of an errand, come back the next day, and see whether four lines are enough to pick it up again.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 14 November 2026</span>
+</div></footer>
+</body>
+</html>
