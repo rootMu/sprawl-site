@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — The physics of a spell</title>
+<meta name="description" content="Sprawl&#x27;s magic now runs on real maths: what a spell costs, how far it flies and what happens when two meet all come from one small piece of physics.">
+<meta property="og:title" content="Sprawl — The physics of a spell">
+<meta property="og:description" content="Sprawl&#x27;s magic now runs on real maths: what a spell costs, how far it flies and what happens when two meet all come from one small piece of physics.">
+<meta property="og:site_name" content="Sprawl">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#141412">
+<link rel="alternate" type="application/rss+xml" title="Sprawl dev blog" href="../blog/feed.xml">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The physics of a spell">
+<meta name="twitter:description" content="Sprawl&#x27;s magic now runs on real maths: what a spell costs, how far it flies and what happens when two meet all come from one small piece of physics.">
+<meta property="og:image" content="https://rootmu.github.io/sprawl-site/img/blog/docs/pr/1565/precision.png">
+<meta name="twitter:image" content="https://rootmu.github.io/sprawl-site/img/blog/docs/pr/1565/precision.png">
+
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../oakwell.html">Oakwell</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><p class="eyebrow">6 November 2026</p><h1>The physics of a spell</h1>
+<p><em>6 November 2026</em></p>
+<p class="lede">Sprawl&#x27;s magic now runs on real maths: what a spell costs, how far it flies and what happens when two meet all come from one small piece of physics.</p>
+<p>Magic in Sprawl has always been built from four choices: what the current is made of (fire, ice, stone and nine more), where it is pointed, what shape it takes and how it behaves in time. Put them together and you have a spell. That part works. The numbers underneath it were another matter.</p>
+<p>Every one of them was picked by hand. A fire bolt flew 8.25 tiles, and so did a lightning bolt, a stone bolt and every other bolt in the game. It hit as hard at the end of its flight as it did at your fingertips. Every pair of essences that &quot;amplify&quot; each other amplified by exactly the same amount. The numbers did their job, but nothing explained them, and every new idea meant inventing more of them. The magic felt a little lacking: right in shape, hollow underneath.</p>
+<h2>A spark from an astrophysicist</h2>
+<p>Then we came across The Gorilla Of Destiny, an astrophysicist who makes videos working out the physics of D&amp;D&#x27;s magic, on paper, with a great deal of joy. His idea is to treat a spell as a wave: a little packet of energy spread out over space and over how much damage it does. Work out the energy that packet needs and something lovely falls out. A spell that does exactly the same damage every time costs infinite energy. A spell that is wildly random costs a lot too. The cheapest spell sits in between, with a little randomness, and he thinks that is where cantrips live.</p>
+<p>In another video he used statistics on D&amp;D&#x27;s spell tables to ask how damage grows with spell level. Casting a low spell at a higher level grows in a straight line; spells that are higher level to begin with grow much faster. As he put it, a level 9 Fireball is not a Meteor Swarm.</p>
+<p>Sprawl is not D&amp;D. It has no spell levels and no dice, just those four choices. So rather than borrow his tables, we took the central idea and built our own model for Sprawl, with a few other pieces of real maths alongside. The charts below are measured from the game&#x27;s own code, not screenshots.</p>
+<h2>Precision has a price</h2>
+<p>Every spell now has a natural spread: how much one strike differs from the next. Hold it tighter and it costs more aether. Hold it looser and it costs more too. The rule is simple: twice as exact costs a quarter more, and so does twice as wild.</p>
+<figure><img src="../img/blog/docs/pr/1565/precision.png" alt="A spell costs more to hold if it lands too evenly, and more if it lands too wildly. Each tier&#x27;s cheapest spread is marked." loading="lazy"></figure>
+<p>The piece that is ours is the caster&#x27;s <strong>grain</strong>: how finely they can hold the current. A master&#x27;s grain is finer, so their cheapest spell lands more evenly and costs less. Here is the nice surprise. Sprawl already gave higher tiers a small discount on aether, and that discount turned out to be exactly the grain. So the physics explains a number we had picked by hand, and no spell&#x27;s cost changed at all.</p>
+<p>Size matters too. A bolt is small and lands within about a tenth of its mean every time. A nova is big and wild, more so in wind and lightning than in steady stone or iron.</p>
+<figure><img src="../img/blog/docs/pr/1565/spread-map.png" alt="How evenly every form and essence lands, from tight blue to wild ember." loading="lazy"></figure>
+<h2>Range comes from fading</h2>
+<p>A loosed bolt now bleeds energy at its own essence&#x27;s rate, and it comes apart when it has lost half. Stone and ice hold together longest, lightning and wind scatter soonest, and fire keeps the flight every bolt had before, so the spell you start with flies as far as it always did.</p>
+<figure><img src="../img/blog/docs/pr/1565/fade.png" alt="How far each essence&#x27;s bolt flies, and how hard it hits along the way." loading="lazy"></figure>
+<p>That also means a bolt hits hardest close up and half as hard at the end of its flight. Weak bolts don&#x27;t notice, because every strike does at least a small fixed amount, but a master&#x27;s bolt rewards stepping in.</p>
+<p>Power buys range, but slowly. Every time you double a spell&#x27;s strength it holds together one half-life longer. When fire meets wind the bolt roars and flies almost twice as far. When fire meets water you get steam, and the bolt barely leaves your hand.</p>
+<figure><img src="../img/blog/docs/pr/1565/range.png" alt="Every doubling of strength adds one half-life of flight. Fire with wind, stone, water and ice marked." loading="lazy"></figure>
+<h2>When two essences meet</h2>
+<p>This is the part we like best. Every essence now has a place on a wheel. When two related essences meet, they add like waves: close together on the wheel they reinforce each other, far apart they cancel. Light and shadow sit exactly opposite, so they annihilate into silence. Unrelated essences never interfere at all, like two lamps shining on the same wall.</p>
+<figure><img src="../img/blog/docs/pr/1565/wheel.png" alt="The essence wheel: each essence&#x27;s place, and the pairs that reinforce or cancel." loading="lazy"></figure>
+<figure><img src="../img/blog/docs/pr/1565/interference.png" alt="Two waves in step build a bigger wave; two exactly out of step cancel; unrelated ones just add." loading="lazy"></figure>
+<p>The old table gave every pair of a kind the same strength. We fitted the wheel to it, so nothing moved far, but now every pair has its own character: ice and water reinforce almost perfectly, while light and life only partly do. And adding a new essence one day means giving it one place on the wheel, not a whole new row of numbers.</p>
+<figure><img src="../img/blog/docs/pr/1565/resonance.png" alt="Each pair&#x27;s old strength, hollow, and its new one on the wheel, filled." loading="lazy"></figure>
+<h2>A surprise in the runes</h2>
+<p>A witch&#x27;s buried runes pass their charge to any rune within a few steps, and one witch can keep sixteen awake at once. We asked the maths how big a field those sixteen can web together, and got the signature of something called percolation: as you add runes, a chain across the field goes from never to always, quite suddenly. One witch can web a small yard every time and a market square about half the time, but almost never anything bigger. That feels exactly right. Webbing a town takes a coven.</p>
+<figure><img src="../img/blog/docs/pr/1565/rune-web.png" alt="As runes are added to a field, a chain across it goes from never to always. Sixteen runes are marked." loading="lazy"></figure>
+<h2>What went wrong</h2>
+<p>Two things, both caught by the tests and by looking hard at the pictures. The first version made a bolt&#x27;s damage depend on how long a frame took, so a stuttering frame could change a hit. It now measures how far the bolt travelled instead, which is what range is really about anyway. And our first picture of two waves meeting made light and shadow look bright when the maths says they cancel. A chart that contradicts its own numbers is worse than no chart, so we redrew it.</p>
+<h2>What comes next</h2>
+<ul><li>Dice. The spread is worked out for every spell, but strikes don&#x27;t roll it yet. That is what will make precision something you feel.</li><li>A precision control in the grimoire, from wild to exact, with the cost shown.</li><li>Overcharging. Pouring more into a spell will grow it in a straight line, while the strain on your body grows with the square: the caster is the wire the current heats. A higher tier stays a real step up, never just a louder version of what you had.</li><li>Backlash on the edge of chaos. When strain overflows, a famous little equation from chaos theory could decide how hard the spell turns on you: steady at first, then flickering, then unpredictable, but always the same for the same moment.</li></ul>
+<figure><img src="../img/blog/docs/pr/1565/backlash.png" alt="A proposal for backlash: steady, then alternating, then chaos as strain rises." loading="lazy"></figure>
+<p>Thanks to The Gorilla Of Destiny for the spark. The model, the wheel and every number in it are Sprawl&#x27;s own; the joy of doing physics on a page of a notebook is his.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 14 November 2026</span>
+</div></footer>
+</body>
+</html>
