@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sprawl — A shorter wait at the gate</title>
+<meta name="description" content="Opening Oakwell took the best part of a minute, most of it spent painting ground that came out the same every time. The town now keeps what it painted, and a close look at the rest of the wait found three delays that had nothing to do with art.">
+<meta property="og:title" content="Sprawl — A shorter wait at the gate">
+<meta property="og:description" content="Opening Oakwell took the best part of a minute, most of it spent painting ground that came out the same every time. The town now keeps what it painted, and a close look at the rest of the wait found three delays that had nothing to do with art.">
+<meta property="og:site_name" content="Sprawl">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#141412">
+<link rel="alternate" type="application/rss+xml" title="Sprawl dev blog" href="../blog/feed.xml">
+<link rel="icon" href="../assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<style>.post{max-width:780px;margin:auto}.post h1{font-size:clamp(36px,6vw,64px);line-height:1.1}.post h2{margin-top:36px}.post p{font-size:19px;line-height:1.65}.post figure{margin:24px 0}.post img{width:100%;height:auto;image-rendering:pixelated}.post li{font-size:19px;line-height:1.65;margin:8px 0}</style><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A shorter wait at the gate">
+<meta name="twitter:description" content="Opening Oakwell took the best part of a minute, most of it spent painting ground that came out the same every time. The town now keeps what it painted, and a close look at the rest of the wait found three delays that had nothing to do with art.">
+<meta property="og:image" content="https://rootmu.github.io/sprawl-site/img/blog/docs/site/shots/town-square.jpg">
+<meta name="twitter:image" content="https://rootmu.github.io/sprawl-site/img/blog/docs/site/shots/town-square.jpg">
+
+</head>
+<body>
+<nav class="site-nav" aria-label="Site"><div class="in">
+  <a class="mark" href="../index.html">Sprawl<span>.</span></a>
+  <ul><li><a href="../index.html">Home</a></li><li><a href="../oakwell.html">Oakwell</a></li><li><a href="../world/">World</a></li><li><a href="../bestiary.html">Bestiary</a></li><li><a href="../journey.html">Journey</a></li><li><a href="../blog/" aria-current=page>Dev blog</a></li></ul>
+</div></nav>
+<main class="wrap"><article class="post"><p class="eyebrow">26 November 2026</p><h1>A shorter wait at the gate</h1>
+<p class="lede">Opening Oakwell took the best part of a minute, most of it spent painting ground that came out the same every time. The town now keeps what it painted, and a close look at the rest of the wait found three delays that had nothing to do with art.</p>
+<p>Every time you start Sprawl you arrive in Oakwell behind a card that says the streets are being laid. That is not a figure of speech. The town&#x27;s ground is not a picture that ships with the game. It is worked out when you arrive, from the town&#x27;s plan: where the lanes run, which doors open onto them, where the old tree throws its shade, how the land climbs toward the hills. That is what lets a town be laid out by rules and not painted by hand. It is also slow.</p>
+<figure><img src="../img/blog/docs/site/shots/town-square.jpg" alt="An earlier capture of Oakwell&#x27;s square in the running game: cobbles worn in rings round the old tree, its shade lying on the stones, market stalls and townsfolk." loading="lazy"></figure>
+<p>Everything under the people and the buildings in that picture is the ground this post is about: the cobbles, the wear round the well, the shade under the tree.</p>
+<h2>How long the wait was</h2>
+<p>We timed a launch on the computer the game is built on, a 2019 laptop that was busy with other work at the time. Counting from the moment the game starts, there was nothing on screen at all for about fifteen seconds. The arrival card then stood for more than half a minute, and you could not move until about fifty-three seconds in. The fields beyond the walls went on arriving after that, and the last of the land was laid at about seventy-four seconds.</p>
+<figure><img src="../img/blog/docs/site/shots/2026-11-26-launch-times.png" alt="A chart of measurements, not a game screenshot: three bars showing seconds from launch until the arrival card appears, until play begins and until all the land is laid, before the change and after it." loading="lazy"></figure>
+<h2>The same ground, painted again</h2>
+<p>Oakwell&#x27;s ground is about half a gigabyte of picture, painted in fourteen pieces: the town itself first, then the land around it, nearest first. The work is shared between six processor threads and it still takes them about a minute. Every launch painted exactly the same ground as the launch before.</p>
+<p>So the game now keeps it. The first time a version of the game opens a town it paints the ground as it always did, and saves each piece as it goes. Every launch after that reads the pieces back. Reading all fourteen takes under a second.</p>
+<h2>Knowing the kept ground is the right ground</h2>
+<p>A saved picture is only worth having if it is the right one. Each piece is filed under a name worked out from everything that goes into painting it: the town&#x27;s plan, the shape of the land, every tree and wall, and the version of the game itself. Change any of those and the name changes with it. The old picture is simply not found, and the ground is painted afresh. Nobody has to remember to throw old pictures away, and nobody keeps a list of which details matter, because all of them go into the name.</p>
+<p>The files are checked as they are read. One that was cut short or damaged is ignored, and that piece is painted again. There is also a test launch that paints everything anyway and compares it with what was kept, one pixel at a time. All fourteen pieces came out identical.</p>
+<p>The kept ground takes about 117 megabytes on disk for Oakwell. The game holds the total to half a gigabyte and lets go of whatever was used longest ago.</p>
+<h2>The wait that was hiding behind it</h2>
+<p>With the ground arriving in under a second, the first test launch was only a little quicker. The ground had been the longest wait, but it had also been hiding others. So we recorded what the game was doing, moment by moment, through a whole launch. Three things stood out, and none of them was art.</p>
+<ul><li>The game kept asking itself a question whose answer never changes. Whether this is the hand-built town is settled by an option given when the game starts. The code looked that option up afresh every time it wanted to know, and it wants to know for every pixel of every wall it paints. In the recording, about nine seconds went on looking it up. It is now looked up once.</li><li>It asked the hard question first. To work out where people can walk, the game asks of every barrel and crate whether it is still in the way, since a crate can be broken open, and only then whether it is anywhere near. Nearly everything is nowhere near. Asking the easy question first gives the same answer much sooner.</li><li>One job was left to a single core while everything else waited. Before the first picture can be shown, the game works out how the streets are shaded. That was meant to happen in the background on six cores. A newer feature, laying out practice weapons in the square, needed the answer early, so it was worked out on the spot on one core. That was another nine seconds in the recording, with nothing on screen. It now uses six.</li></ul>
+<h2>What it adds up to</h2>
+<p>Before, the card appeared at about fifteen seconds, you could play at about fifty-three, and the land was complete at about seventy-four.</p>
+<p>Now, the first launch of a new version still paints the ground, but the card appears at about six seconds and you can play at about thirty-five.</p>
+<p>Every launch after that reads the ground back. The card appears at about six seconds, you can play at about twenty-four, and the whole of the land is there three seconds later.</p>
+<p>Each of those is the middle of three launches. The old and new versions were run turn and turn about on the same computer, so that whatever else it was doing slowed both alike. On a quieter computer every number will be smaller. The gap between them is the part to trust.</p>
+<h2>What is still slow</h2>
+<p>There is still one long pause after the card appears, of fifteen seconds or more, while the town&#x27;s buildings are drawn for the first time. That is now the largest part of the wait. The buildings&#x27; artwork can be kept between launches in the same way, and the work for that already exists behind a switch that is not yet on. It is next.</p>
+<p>The town also holds a great deal of picture in memory once you have walked all the way round it, about two gigabytes. That is a separate job, and it has not been started.</p><p><a href="./">All public posts</a></p></article></main>
+<footer class="site-foot"><div class="in">
+  <span>Sprawl is in development. Built from the game’s own art, data and development notes.</span>
+  <span>Built 27 November 2026</span>
+</div></footer>
+</body>
+</html>
